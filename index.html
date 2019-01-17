@@ -116,7 +116,8 @@
 		var singleCheckWrap = "<div class='characterCheckWrap'></div>";
 		var selectAllWrap = "<div class='selectAllWrap'></div>";
 		var gameMelee = [	["fe", 0, ""],
-							["nm", 89, "Mystery of the Emblem"],
+							["nm", 81, "Mystery of the Emblem"],
+							["nme", 10, "Mystery of the Emblem Extra"],
 						];
 		
 		// stores names for every character in every game ...
@@ -211,7 +212,9 @@
 			characterId = parseInt($(this).attr("id"));
 			if($(this).is(":checked")) {
 				$(".characterCheck").each( function() {
-					$(this).prop('checked', true).change();
+					if (!$(this).is(":checked" )) {
+						$(this).prop('checked', true).change();
+					}
 				});
 			} else {
 				$(".characterCheck").each( function() {
@@ -328,17 +331,30 @@
 			$(".characterCheckWrap").each( function() {
 				$(this).remove();
 			});
-			for (var i = 1; i < game.length; i++) {
+			
+			// initialize first game only
+			for (var k = 0; k <= game[1][1]; k++) {
+				$("#char div:last-child").after(singleChar);
+				$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[1][0]+"/"+k+".png)");
+				$("#char div:last-child").attr("id",1);
+			}
+			$("#checklist div:last-child").after(singleCheckWrap);
+			$("#checklist div:last-child").html(game[1][2]+": <input type='checkbox' class='characterCheck' id='"+1+"' checked>");
+			
+			for (var i = 2; i < game.length; i++) {
+				/*
 				for (var k = 0; k <= game[i][1]; k++) {
 					$("#char div:last-child").after(singleChar);
 					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i][0]+"/"+k+".png)");
 					$("#char div:last-child").attr("id",i);
 				}
+				*/
+				
 				$("#checklist div:last-child").after(singleCheckWrap);
-				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck' id='"+i+"' checked>");
+				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck' id='"+i+"' >");
 			}
 			$("#checklist div:last-child").after(selectAllWrap);
-			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' checked>");
+			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
 
 			$("h1 span").text(currentGame);
 			updateTiers();
