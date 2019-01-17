@@ -1,6 +1,8 @@
 well this was forked from https://github.com/quetzle/smash-apps
 
-original readme here until I replace it
+it's a tier list for every character in the Fire Emblem series.
+
+original readme here until I replace it:
 
 Smash Apps
 ==========
