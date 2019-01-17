@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-	<link rel="icon" type="image/x-icon" href= "../icon.png"/>
-	<title>Color Tier List Maker - Smash Apps</title>
+	<link rel="icon" type="image/x-icon" href= "icon.png"/>
+	<title>FE Tier List Maker</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
 	<link href="newstyle.css" rel="stylesheet">
 	<link href="dragula.min.css" rel="stylesheet">
@@ -77,15 +77,18 @@
 				<h1>CHANGE CHARACTERS</h1>
 				<span id="close"></span>
 				<div id="checklist"><div></div></div>
-				<p><strong>Hiding characters will remove them from your tierlist!</strong> Do not click unless you are sure you want to change! You cannot undo this.</p>
+				<p><strong>Hiding a game will remove every character from that game from your tierlist!</strong> Do not click unless you are sure you want to change! You cannot undo this.</p>
 			</div>
 			<div id="helpMenu">
 				<h1>HELP</h1>
 				<span id="close"></span>
-				<p>This is like the <a href="../tier">Smash Tier List Maker</a>, but with every color in the game instead.</p>
+				<p>This is like a Smash Tier List Maker, but with Fire Emblem instead.</p>
+				<p>Code was forked from <a href ="https://github.com/quetzle/smash-apps">https://github.com/quetzle/smash-apps</a>.<p>
+				<!--
 				<p><strong>Right now, only Melee is supported.</strong> You can modify the characters that will be displayed by clicking on the "Change characters" button and checking off the boxes.</p>
+				!-->
 				<p><strong>To take a screenshot,</strong> you can click the "Hide controls" button to make the list look cleaner. Then, use a screenshot tool such as Snipping Tool on Windows to take a screenshot. Unfortunately, the built-in screenshot feature had to be removed as it wasn't working in this version of the tier list maker.</p>
-				<p>There is a gear next to each tier in the tierlist. (If you don't see this gear, click on the "Show controls" button in the top bar. If this doesn't work, <a href="https://www.reddit.com/message/compose?to=Buizbuiz&subject=Smash%20Tier%20List%20Maker">message /u/Buizbuiz on reddit</a>.) If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
+				<p>There is a gear next to each tier in the tierlist. <!--(If you don't see this gear, click on the "Show controls" button in the top bar. If this doesn't work, <a href="https://www.reddit.com/message/compose?to=Buizbuiz&subject=Smash%20Tier%20List%20Maker">message /u/Buizbuiz on reddit</a>.) !--> If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
 				<p>Next to the gear are 2 arrows, pointed up and down. Clicking these will let you <strong>move a tier up and down a level</strong>.</p>
 				<p><strong>You can change the name of the tier.</strong> Click on the tier label, you can type in there. If this doesn't work, you can change it in the textbox in the corresponding settings menu.</p>
 				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
@@ -110,6 +113,7 @@
 		// character images
 		var singleChar = "<div class='character'></div>";
 		var singleCheckWrap = "<div class='characterCheckWrap'></div>";
+		var selectAllWrap = "<div class='selectAllWrap'></div>";
 		var gameMelee = [	["melee", 0, ""],
 							["bowser", 3, "Bowser"],
 							["captain", 5, "C. Falcon"],
@@ -137,6 +141,11 @@
 							["yoshi", 5, "Yoshi"],
 							["ylink", 4, "Young Link"],
 							["zelda", 4, "Zelda"] ];
+		
+		// stores names for every character in every game ...
+		var allCharacters = [	["Mars", "Sheeda"],
+								[],
+								[],];
 		
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
 		
@@ -206,7 +215,7 @@
 			updateTiers();
 		});
 		
-		$(document).on("click", ".characterCheck", function() { // add/remove character
+		$(document).on("change", ".characterCheck", function() { // add/remove character
 			characterId = parseInt($(this).attr("id"));
 			if($(this).is(":checked")) {
 				for (var k = 0; k <= currentGameChars[characterId][1]; k++) {
@@ -217,6 +226,19 @@
 			} else {
 				$(".character[id="+characterId+"]").each( function() {
 					$(this).remove();
+				});
+			}
+		});
+		
+		$(document).on("change", ".selectAll", function() { // add/remove all characters
+			characterId = parseInt($(this).attr("id"));
+			if($(this).is(":checked")) {
+				$(".characterCheck").each( function() {
+					$(this).prop('checked', true).change();
+				});
+			} else {
+				$(".characterCheck").each( function() {
+					$(this).prop('checked', false).change();
 				});
 			}
 		});
@@ -338,6 +360,9 @@
 				$("#checklist div:last-child").after(singleCheckWrap);
 				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck' id='"+i+"' checked>");
 			}
+			$("#checklist div:last-child").after(selectAllWrap);
+			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' checked>");
+
 			$("h1 span").text(currentGame);
 			updateTiers();
 		}
