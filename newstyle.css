@@ -149,7 +149,8 @@ img {
 	height: 64px;
 	width: 64px;
 	background-position: top;
-	background-size: 64px;
+	background-repeat: no-repeat;
+	background-size: contain;
 	background-color:white;
 }
 
