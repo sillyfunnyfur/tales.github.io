@@ -1,3 +1,7 @@
+well this was forked from https://github.com/quetzle/smash-apps
+
+original readme here until I replace it
+
 Smash Apps
 ==========
 
