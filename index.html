@@ -83,7 +83,8 @@
 				<h1>HELP</h1>
 				<span id="close"></span>
 				<p>This is like a Smash Tier List Maker, but with Fire Emblem instead.</p>
-				<p>Code was forked from <a href ="https://github.com/quetzle/smash-apps">https://github.com/quetzle/smash-apps</a>.<p>
+				<p>Code was forked from <a href ="https://github.com/quetzle/smash-apps">https://github.com/quetzle/smash-apps</a>.</p>
+				<p>Portraits are sourced from <a href="https://serenesforest.net/">Serenes Forest</a> and property of Nintendo/Intelligent Systems.</[>
 				<!--
 				<p><strong>Right now, only Melee is supported.</strong> You can modify the characters that will be displayed by clicking on the "Change characters" button and checking off the boxes.</p>
 				!-->
@@ -114,9 +115,7 @@
 		var singleChar = "<div class='character'></div>";
 		var singleCheckWrap = "<div class='characterCheckWrap'></div>";
 		var selectAllWrap = "<div class='selectAllWrap'></div>";
-		var gameMelee = [	["melee", 0, ""],
-							["bowser", 3, "Bowser"],
-							["captain", 5, "C. Falcon"],
+		/* 					["sd", 0, "Shadow Dragon"]
 							["dk", 4, "DK"],
 							["doc", 4, "Dr. Mario"],
 							["falco", 3, "Falco"],
@@ -140,11 +139,13 @@
 							["sheik", 4, "Sheik"],
 							["yoshi", 5, "Yoshi"],
 							["ylink", 4, "Young Link"],
-							["zelda", 4, "Zelda"] ];
+							["zelda", 4, "Zelda"] */
+		var gameMelee = [	["fe", 0, ""],
+							["nm", 89, "Mystery of the Emblem"]];
 		
 		// stores names for every character in every game ...
 		var allCharacters = [	["Mars", "Sheeda"],
-								[],
+								["Marth", "Kris"],
 								[],];
 		
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
@@ -220,7 +221,7 @@
 			if($(this).is(":checked")) {
 				for (var k = 0; k <= currentGameChars[characterId][1]; k++) {
 					$("#char div:last-child").after(singleChar);
-					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+currentGameChars[characterId][0]+k+".png)");
+					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+currentGameChars[characterId][0]+"/"+k+".png)");
 					$("#char div:last-child").attr("id",characterId);
 				}
 			} else {
@@ -354,7 +355,7 @@
 			for (var i = 1; i < game.length; i++) {
 				for (var k = 0; k <= game[i][1]; k++) {
 					$("#char div:last-child").after(singleChar);
-					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i][0]+k+".png)");
+					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i][0]+"/"+k+".png)");
 					$("#char div:last-child").attr("id",i);
 				}
 				$("#checklist div:last-child").after(singleCheckWrap);
@@ -411,7 +412,7 @@
 			console.log(processedCode);
 			switch(processedCode[0][0]) {
 				case "64": changeGame(game64);break;
-				case "melee": changeGame(gameMelee);break;
+				case "fe": changeGame(gameMelee);break;
 				case "brawl": changeGame(gameBrawl);break;
 				case "pm": changeGame(gamePM);break;
 				case "ssb4": changeGame(gameSmash4);break;
