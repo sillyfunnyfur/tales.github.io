@@ -12,7 +12,7 @@ body {
 }
 
 #controls {
-	width: 774px;
+	width: 776px;
 	height: 80px;
 	margin: 0 auto;
 	padding-right: 1px;
@@ -41,6 +41,7 @@ h1 {
 	padding: 30px 0;
 	background-color: #1A1A1A;
 	width: 100%;
+	top: 0;
 	display:block;
 }
 
@@ -61,7 +62,6 @@ table {
 	margin-right: auto;
 	border-spacing: 0;
 	border: solid 3px black;
-	/* background:#1A1A1A url("img/smashballbg.png") no-repeat bottom right; */
 }
 
 .labelHolder {
