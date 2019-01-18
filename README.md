@@ -2,19 +2,4 @@ well this was forked from https://github.com/quetzle/smash-apps
 
 it's a tier list for every character in the Fire Emblem series.
 
-original readme here until I replace it:
-
-Smash Apps
-==========
-
-A collection of useful web apps for Super Smash Bros.
-
-[Use them!](http://quetzle.github.io/smash-apps)
-
-Currently, the apps are:
-
-* [Stage Striking](http://quetzle.github.io/smash-apps/stage) - choose what stage to play on by banning certain stages!
-* [Tier List Maker](http://quetzle.github.io/smash-apps/tier) - create a tier list to show how you think the characters stack up!
-* [Color Ranks](http://quetzle.github.io/smash-apps/colors) - choose what your favorite colors are for each character!
-* [Color Tier List Maker](http://quetzle.github.io/smash-apps/colortiers) - create a tier list of every color in the game!
-[comment]: # (Lee is total garbage lol)
+Please review the [contribution guide](https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CONTRIBUTING.md) if you want to add/modify portraits or functionality.
