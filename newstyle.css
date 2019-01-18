@@ -148,7 +148,7 @@ img {
 	display:inline-block;
 	height: 64px;
 	width: 64px;
-	background-position: top;
+	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-color:white;
