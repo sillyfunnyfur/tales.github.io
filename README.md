@@ -1,3 +1,5 @@
+# Fire Emblem Tier List Maker
+
 well this was forked from https://github.com/quetzle/smash-apps
 
 it's a tier list for every character in the Fire Emblem series.
