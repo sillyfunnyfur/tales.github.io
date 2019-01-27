@@ -128,10 +128,9 @@
 		var selectAllWrap = "<div class='selectAllWrap'></div>";
 		var gameMelee = [	["fe", 0, ""],
 							["mote2", 44, "Mystery of the Emblem Book 2"],
-							["mote2e", 9, "Mystery of the Emblem Book 2 Extra"],
-							["mote1", 20, "Mystery Book 1 and Extra"],
+							["mote1", 30, "Mystery Book 1 and Extra"],
 							["nm", 81, "New Mystery of the Emblem"],
-							["nme", 10, "New Mystery of the Emblem Extra"],
+							["nme", 10, "New Mystery Extra"],
 							["sov", 33, "Shadows of Valentia"],
 							["sove", 11, "Shadows of Valentia Extra"],
 							["ghw1", 23, "Genealogy Part 1"],
@@ -395,16 +394,7 @@
 				$(this).remove();
 			});
 			
-			// initialize first game only
-			for (var k = 0; k <= game[1][1]; k++) {
-				$("#char div:last-child").after(singleChar);
-				$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[1][0]+"/"+k+".png)");
-				$("#char div:last-child").attr("id",1);
-			}
-			$("#checklist div:last-child").after(singleCheckWrap);
-			$("#checklist div:last-child").html(game[1][2]+": <input type='checkbox' class='characterCheck' id='"+1+"' checked>");
-			
-			for (var i = 2; i < game.length; i++) {
+			for (var i = 1; i < game.length; i++) {
 				/*
 				for (var k = 0; k <= game[i][1]; k++) {
 					$("#char div:last-child").after(singleChar);
@@ -414,10 +404,12 @@
 				*/
 				
 				$("#checklist div:last-child").after(singleCheckWrap);
-				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck' id='"+i+"' >");
+				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+i+"' >");
 			}
 			$("#checklist div:last-child").after(selectAllWrap);
 			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
+			
+			$( ".characterCheck.game3" ).prop('checked', true).change();
 
 			$("h1 span").text(currentGame);
 			updateTiers();
