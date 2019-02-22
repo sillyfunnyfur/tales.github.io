@@ -95,13 +95,14 @@
 				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
 				<p>Portraits are sourced from <a href="https://serenesforest.net/">Serenes Forest</a> and the <a href="https://fireemblemwiki.org/">Fire Emblem Wiki</a>,
 				and property of Nintendo/Intelligent Systems.</p>
+				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
 				<p>Clicking on the "Dock tier list" button will <strong>stick the tier list to the top of the window.</strong>
 				This can be useful if you have a large number of characters on-screen and don't want to scroll up and down
 				as you drag them into your list. Clicking the button again will return the list to its original position.</p>
 				<p><strong>To take a screenshot,</strong> you can click the "Hide controls" button to make the list look cleaner. Then, use a screenshot tool such as Snipping Tool on Windows to take a screenshot.</p>
 				<p>There is a gear next to each tier in the tierlist. If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
-				<p>Next to the gear are 2 arrows, pointed up and down. Clicking these will let you <strong>move a tier up and down a level</strong>.</p>
-				<p><strong>You can change the name of the tier.</strong> Click on the tier label, you can type in there. If this doesn't work, you can change it in the textbox in the corresponding settings menu.</p>
+				<p>Next to the gear are two arrows which will let you <strong>move a tier up and down a level</strong>.</p>
+				<p><strong>You can change the name of the tier.</strong> Click on the tier label, you can type in there. If this doesn't work, you can change it or reset it in the textbox in the corresponding settings menu.</p>
 				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
 				<p>For any issues, add it to the list on the repository page or message me if you know where to find me.</p>
 			</div>
@@ -126,7 +127,7 @@
 		var singleChar = "<div class='character'></div>";
 		var singleCheckWrap = "<div class='characterCheckWrap'></div>";
 		var selectAllWrap = "<div class='selectAllWrap'></div>";
-		var gameMelee = [	["fe", 0, ""],
+		var gameFe = [	["fe", 0, ""],
 							["mote2", 44, "Mystery of the Emblem Book 2"],
 							["mote1", 30, "Mystery Book 1 and Extra"],
 							["nm", 81, "New Mystery of the Emblem"],
@@ -155,10 +156,12 @@
 							["fbr", 30, "Fates Birthright"],
 							["fcq", 31, "Fates Conquest"],
 							["fex", 8, "Fates Extra"],
+							["thrh", 4, "Three Houses"],
 							["tms", 13, "Tokyo Mirage Sessions"],
 							["hoc", 20, "Heroes"],
 							["woc", 4, "Warriors"],
 							["tlp", 3, "The Last Promise"],
+							["trs", 1, "TearRing Saga"],
 						];
 		
 		// stores names for every character in every game ...
@@ -187,7 +190,7 @@
 		var currentColor;
 		var colorIndex;
 		var currentGame;
-		var currentGameChars = gameMelee;
+		var currentGameChars = gameFe;
 		var characters;
 		var characterId;
 					  
@@ -275,6 +278,11 @@
 					$(this).prop('checked', false).change();
 				});
 			}
+		});
+		
+		
+		$(document).on("dblclick", ".character", function() { // move to highest tier instantly
+			$(this).detach().appendTo('#rows');
 		});
 			
 		$(document).on("click", function(e) {
@@ -458,13 +466,7 @@
 			});
 			console.log(processedCode);
 			switch(processedCode[0][0]) {
-				case "64": changeGame(game64);break;
-				case "fe": changeGame(gameMelee);break;
-				case "brawl": changeGame(gameBrawl);break;
-				case "pm": changeGame(gamePM);break;
-				case "ssb4": changeGame(gameSmash4);break;
-				case "sfv": changeGame(gameSFV);break;
-				case "ggrev": changeGame(gameGGREV);break;
+				case "fe": changeGame(gameFe);break;
 			}
 			for (var i = 1; i < processedCode.length; i++) {
 				$("tbody").append(singleTier);
@@ -493,7 +495,7 @@
 		$(document).ready( function() {
 			$("#char").html("<div></div>");
 			if (localStorage.getItem("ColorTiersCode") === null)
-				changeGame(gameMelee);
+				changeGame(gameFe);
 			else {
 				$("#exportcode").val(localStorage.getItem("ColorTiersCode"));
 				loadCode(localStorage.getItem("ColorTiersCode"));
