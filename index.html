@@ -251,7 +251,7 @@
 			$("#overlay").css("opacity", 1);
 			$("#overlay").css("visibility", "visible");
 			$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
-			$("#screenshotShow").find("textarea").text(toCode());
+			$("#screenshotShow").find("textarea").val(toCode());
 		});
 		
 		$(document).on("click", "#colorselect span", function() { // change row label
