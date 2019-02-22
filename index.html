@@ -465,9 +465,13 @@
 				$(this).remove();
 			});
 			console.log(processedCode);
+			/*
+			// deprecated switch statement
 			switch(processedCode[0][0]) {
 				case "fe": changeGame(gameFe);break;
 			}
+			*/
+			changeGame(gameFe);
 			for (var i = 1; i < processedCode.length; i++) {
 				$("tbody").append(singleTier);
 				$("tr:last-of-type").find(".labelHolder").css("background-color",colors[processedCode[i][1]]);
