@@ -272,7 +272,7 @@
 					$("#char div:last-child").attr("id", currentGameChars[characterId][0] + "-" + k);
 				}
 			} else {
-				$(".character[id="+characterId+"]").each( function() {
+				$(".character[id^="+currentGameChars[characterId][0]+"]").each( function() {
 					$(this).remove();
 				});
 			}
