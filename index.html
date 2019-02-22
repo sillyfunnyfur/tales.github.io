@@ -22,6 +22,7 @@
 			<button id="hidebuttons">Hide controls</button>
 			<button id="characters">Change characters</button>
 			<button id="help">Help</button>
+			<button id="save">Save/Load</button>
 			<button id="reset">Reset</button>
 		</div>
 	</div>
@@ -107,9 +108,13 @@
 				<p>For any issues, add it to the list on the repository page or message me if you know where to find me.</p>
 			</div>
 			<div id="screenshotShow">
+				<h1>SAVE/LOAD</h1>
 				<span id="close"></span>
-				<p>Your image should appear above. You can copy or save this image. Try uploading it to an image hosting website such as <a href="http://imgur.com">Imgur</a>. Alternatively, copy the code below to share an editable version of your tierlist. Just paste a code into the box below and click "Run code" to access it.</p>
-			<textarea id="exportcode" cols="30" rows="8"></textarea><div><button id="runCode">Run code</button></div>
+				<!--<p>Your image should appear above. You can copy or save this image. Try uploading it to an image hosting website such as <a href="http://imgur.com">Imgur</a>. Alternatively, copy the code below to share an editable version of your tierlist. Just paste a code into the box below and click "Run code" to access it.</p>!-->
+				<p style="text-align: left;">Your code should appear in the text box below. Paste a code into the box below and click "Run code" to load another tier list.</p>
+				<p style="text-align: left;">Note that EVERY image will be loaded when you press "Run code", so be wary if you have a slow connection.</p>
+				<textarea id="exportcode" cols="40" rows="8"></textarea><div><button id="runCode">Run code</button></div>
+			</div>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -239,6 +244,14 @@
 			$("#overlay").css("opacity", 1);
 			$("#overlay").css("visibility", "visible");
 			$("#helpMenu").css("top",alignPopup($("#helpMenu")));
+		});
+		
+		$(document).on("click", "#save", function() { // open save/load modal
+			$("#screenshotShow").css("display","block");
+			$("#overlay").css("opacity", 1);
+			$("#overlay").css("visibility", "visible");
+			$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
+			$("#screenshotShow").find("textarea").text(toCode());
 		});
 		
 		$(document).on("click", "#colorselect span", function() { // change row label
