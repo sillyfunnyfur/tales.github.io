@@ -250,13 +250,13 @@
 			updateTiers();
 		});
 		
-		$(document).on("change", ".characterCheck", function() { // add/remove character
+		$(document).on("change", ".characterCheck", function() { // add/remove characters
 			characterId = parseInt($(this).attr("id"));
 			if($(this).is(":checked")) {
 				for (var k = 0; k <= currentGameChars[characterId][1]; k++) {
 					$("#char div:last-child").after(singleChar);
 					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+currentGameChars[characterId][0]+"/"+k+".png)");
-					$("#char div:last-child").attr("id",characterId);
+					$("#char div:last-child").attr("id", currentGameChars[characterId][0] + "-" + k);
 				}
 			} else {
 				$(".character[id="+characterId+"]").each( function() {
@@ -266,7 +266,6 @@
 		});
 		
 		$(document).on("change", ".selectAll", function() { // add/remove all characters
-			characterId = parseInt($(this).attr("id"));
 			if($(this).is(":checked")) {
 				$(".characterCheck").each( function() {
 					if (!$(this).is(":checked" )) {
@@ -457,8 +456,10 @@
 			codeSplit = code.split("==");
 			for (var i = 0; i < codeSplit.length; i++) {
 				tempTier = codeSplit[i].split("|");
-				for (var c = 1; c < tempTier.length; c++)
-					tempTier[c] = Number(tempTier[c]);
+				tempTier[1] = Number(tempTier[1]);
+				for (var j = 2; j < tempTier.length; j++) {
+					tempTier[j] = tempTier[j].split("-");
+				}
 				processedCode[i] = tempTier;
 			}
 			$("tr").each( function() {
@@ -472,15 +473,22 @@
 			}
 			*/
 			changeGame(gameFe);
+			// eventually select only the games that appear
+			$(".selectAll").prop('checked', true).change();
 			for (var i = 1; i < processedCode.length; i++) {
 				$("tbody").append(singleTier);
 				$("tr:last-of-type").find(".labelHolder").css("background-color",colors[processedCode[i][1]]);
 				$("tr:last-of-type").find(".label").html(processedCode[i][0]);
-				for (var c = 2; c < processedCode[i].length; c++) {
+				for (var j = 2; j < processedCode[i].length; j++) {
+					var title = processedCode[i][j][0];
+					var index = processedCode[i][j][1];
+					$("#"+title+"-"+index+".character").detach().appendTo($("tr:last-of-type").find(".tier"));
+					/*
 					$("tr:last-of-type").find(".tier div:last-child").after(singleChar);
-					$("tr:last-of-type").find(".tier div:last-child").css("background-image","url(img/"+processedCode[0]+"/"+currentGameChars[processedCode[i][c]]+".png)");
-					$("tr:last-of-type").find(".tier div:last-child").attr("id",processedCode[i][c]);
-					$("#char #"+processedCode[i][c]).remove();
+					$("tr:last-of-type").find(".tier div:last-child").css("background-image","url(img/"+processedCode[0][0]+"/"+title+"/"+index+".png)");
+					$("tr:last-of-type").find(".tier div:last-child").attr("id", title + "-" + index);
+					$("#char > #"+title+"-"+index).remove();
+					*/
 				}
 			}
 		}
