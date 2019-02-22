@@ -112,7 +112,7 @@
 				<span id="close"></span>
 				<!--<p>Your image should appear above. You can copy or save this image. Try uploading it to an image hosting website such as <a href="http://imgur.com">Imgur</a>. Alternatively, copy the code below to share an editable version of your tierlist. Just paste a code into the box below and click "Run code" to access it.</p>!-->
 				<p style="text-align: left;">Your code should appear in the text box below. Paste a code into the box below and click "Run code" to load another tier list.</p>
-				<p style="text-align: left;">Note that EVERY image will be loaded when you press "Run code", so be wary if you have a slow connection.</p>
+				<p style="text-align: left;">Note that any game that does not appear in the loaded list will be deselected.</p>
 				<textarea id="exportcode" cols="40" rows="8"></textarea><div><button id="runCode">Run code</button></div>
 			</div>
 		</div>
@@ -264,15 +264,21 @@
 		});
 		
 		$(document).on("change", ".characterCheck", function() { // add/remove characters
-			characterId = parseInt($(this).attr("id"));
+			gameId = ($(this).attr("id"));
+			gameClass = ($(this).attr("class"));
+			// remove non-numeric characters - stackoverflow.com/questions/1862130/
+			gameIndex = gameClass.replace(/\D/g,'');
+			// alternative 
+			// gameInfo = currentGameChars.find(function(curr) { return curr[0] == gameId;});
+			
 			if($(this).is(":checked")) {
-				for (var k = 0; k <= currentGameChars[characterId][1]; k++) {
+				for (var k = 0; k <= currentGameChars[gameIndex][1]; k++) {
 					$("#char div:last-child").after(singleChar);
-					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+currentGameChars[characterId][0]+"/"+k+".png)");
-					$("#char div:last-child").attr("id", currentGameChars[characterId][0] + "-" + k);
+					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+gameId+"/"+k+".png)");
+					$("#char div:last-child").attr("id", gameId + "-" + k);
 				}
 			} else {
-				$(".character[id^="+currentGameChars[characterId][0]+"]").each( function() {
+				$(".character[id^="+currentGameChars[gameIndex][0]+"]").each( function() {
 					$(this).remove();
 				});
 			}
@@ -424,7 +430,7 @@
 				*/
 				
 				$("#checklist div:last-child").after(singleCheckWrap);
-				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+i+"' >");
+				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+game[i][0]+"' >");
 			}
 			$("#checklist div:last-child").after(selectAllWrap);
 			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
@@ -486,15 +492,38 @@
 			}
 			*/
 			changeGame(gameFe);
-			// eventually select only the games that appear
-			$(".selectAll").prop('checked', true).change();
+			// select only the games that appear
+			$(".selectAll").prop('checked', false).change();
+			selectionList = [];
+			for (var i = 1; i < processedCode.length; i++) {
+				for (var j = 2; j < processedCode[i].length; j++) {
+					title = processedCode[i][j][0];
+					checkBox = $("#" + title + ".characterCheck");
+					gameClass = (checkBox.attr("class"));
+					// remove non-numeric characters - stackoverflow.com/questions/1862130/
+					gameIndex = gameClass.replace(/\D/g,'');
+					
+					// add if unique
+					if (selectionList.indexOf(parseInt(gameIndex)) === -1) {
+						selectionList.push(parseInt(gameIndex));
+					}
+				}
+			}
+			// sort by ascending
+			selectionList.sort(function(a, b) { return a - b; });
+			for (var x = 0; x < selectionList.length; x++) {
+				checkBox = $(".characterCheck.game" + selectionList[x]);
+				if (!checkBox.is(":checked" )) {
+					checkBox.prop('checked', true).change();
+				}
+			}
 			for (var i = 1; i < processedCode.length; i++) {
 				$("tbody").append(singleTier);
 				$("tr:last-of-type").find(".labelHolder").css("background-color",colors[processedCode[i][1]]);
 				$("tr:last-of-type").find(".label").html(processedCode[i][0]);
-				for (var j = 2; j < processedCode[i].length; j++) {
-					var title = processedCode[i][j][0];
-					var index = processedCode[i][j][1];
+				for (var k = 2; k < processedCode[i].length; k++) {
+					title = processedCode[i][k][0];
+					index = processedCode[i][k][1];
 					$("#"+title+"-"+index+".character").detach().appendTo($("tr:last-of-type").find(".tier"));
 					/*
 					$("tr:last-of-type").find(".tier div:last-child").after(singleChar);
