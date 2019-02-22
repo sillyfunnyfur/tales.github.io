@@ -12,7 +12,8 @@ body {
 }
 
 #controls {
-	width: 776px;
+	/* width: 776px; goodbye funny joke */
+	width: 900px;
 	height: 80px;
 	margin: 0 auto;
 	padding-right: 1px;
