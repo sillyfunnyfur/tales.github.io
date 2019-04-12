@@ -259,6 +259,12 @@ button:active {
 	display:inline-block;
 }
 
+.ui-tooltip {
+	padding: 6px;
+	font: 400 16px Arial;
+	box-shadow: #dedede;
+}
+
 @media (max-width: 1280px) and (max-device-width: 1280px) {
 	.tier{width:640px;}
 	table{min-width:0px;}
