@@ -6,6 +6,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
 	<link href="newstyle.css" rel="stylesheet">
 	<link href="dragula.min.css" rel="stylesheet">
+	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@e5e_ebooks" />
 	<meta content='https://fe-tier-list-maker.github.io/preview_image.png' property='og:image'/>
@@ -116,7 +117,9 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="allnames.js"></script>
 	<script src="dragula.min.js"></script>
 	<script>
 		dragula({
@@ -167,11 +170,6 @@
 							["tlp", 55, "The Last Promise"],
 							["trs", 1, "TearRing Saga"],
 						];
-		
-		// stores names for every character in every game ...
-		var allCharacters = [	["Mars", "Sheeda"],
-								["Marth", "Kris"],
-								[],];
 		
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
 		
@@ -262,6 +260,10 @@
 			updateTiers();
 		});
 		
+		$( function() {
+			$( document ).tooltip();
+		} );
+		
 		$(document).on("change", ".characterCheck", function() { // add/remove characters
 			gameId = ($(this).attr("id"));
 			gameClass = ($(this).attr("class"));
@@ -275,6 +277,7 @@
 					$("#char div:last-child").after(singleChar);
 					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+gameId+"/"+k+".png)");
 					$("#char div:last-child").attr("id", gameId + "-" + k);
+					$("#char div:last-child").attr("title", allCharacters[gameIndex][k]);
 				}
 			} else {
 				$(".character[id^="+currentGameChars[gameIndex][0]+"]").each( function() {
@@ -397,7 +400,7 @@
 				currentColor = currentTier.find(".labelHolder").css("background-color"); // returns in rgb format, have to convert to hex
 				tier[0] = currentTier;
 				tier[1] = colors.indexOf(rgb2hex(currentColor).toUpperCase());
-				console.log(tier);
+				// console.log(tier);
 				tierlist.push(tier);
 			}
 			currentTier = tempTier;
