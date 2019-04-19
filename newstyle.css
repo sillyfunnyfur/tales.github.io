@@ -254,6 +254,7 @@ button:active {
 
 .selectAllWrap {
 	width: 16%;
+	padding-top: 2px;
 	padding-left: 36%;
 	padding-right: 36%;
 	display:inline-block;
