@@ -141,7 +141,8 @@ div#moveDown {
 }
 
 #char {
-	width: 1024px;
+	max-width: 1024px;
+	width: 90%;
 	margin: 10px auto;
 	line-height: 0px;
 	padding-bottom: 32px;
