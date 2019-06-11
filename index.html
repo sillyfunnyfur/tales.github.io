@@ -13,8 +13,9 @@
 	<meta content='https://fe-tier-list-maker.github.io/' property='og:url'/>
 	<meta content='FE Tier List Maker' property='og:title'/>
 	<meta content='Everyone is here!' property='og:description'/>
-	<meta name="keywords" content="Fire Emblem,Tier List">
+	<meta name="keywords" content="Fire Emblem,Tier List,FE,SoV,Awakening,Fates,Three Houses">
 	<meta name="viewport" content="width=1024, user-scalable=no">
+	<meta charset="UTF-8"> 
 </head>
 <body>
 	<div id="controls">
@@ -37,33 +38,33 @@
 		</tr>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">A</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
 		</tr>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">B</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
 		</tr>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">C</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
 		</tr>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">D</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
 		</tr>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">E</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
 		</tr>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">F</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
 		</tr>
 	</tbody></table>
 	</div>
@@ -172,7 +173,7 @@
 							["trs", 1, "TearRing Saga"],
 						];
 		
-		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
+		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
 		
 		var screenshotMode = false;
 		var listStickied = false;
@@ -411,7 +412,7 @@
 				tierlist.push(tier);
 			}
 			currentTier = tempTier;
-			console.log(tierlist);
+			// console.log(tierlist);
 		}
 		
 		function changeGame(game) {

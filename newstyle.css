@@ -13,12 +13,21 @@ body {
 
 #controls {
 	/* width: 776px; goodbye funny joke */
-	width: 900px;
-	height: 80px;
+	width: 600px;
+	height: 120px;
 	margin: 0 auto;
+	line-height: 9px;
 	padding-right: 1px;
 	text-align: left;
 	vertical-align: middle;
+}
+
+@media only screen and (min-width: 900px) {
+	#controls {
+		width: 900px;
+		height: 80px;
+		line-height:19px;
+	}
 }
 
 h1 {
@@ -63,7 +72,7 @@ tr {
 }
 
 table {
-	min-width: 1000px;
+	max-width: 90%;
 	margin-left: auto;
 	margin-right: auto;
 	border-spacing: 0;
@@ -88,10 +97,21 @@ table {
 	padding: 4px;
 }
 
+.tierHolder {
+	width:90%;
+}
+
 .tier {
-	width: 960px;
+	width:inherit;
+	max-width: 576px;
 	min-height: 64px;
 	text-align: left;
+}
+
+@media (min-width: 900px) {
+	.tier{width:640px; max-width: 640px;}
+	.tierHolder {width:640px;}
+	table{min-width:0px;}
 }
 
 .hiddenkid {
@@ -146,6 +166,17 @@ div#moveDown {
 	margin: 10px auto;
 	line-height: 0px;
 	padding-bottom: 32px;
+	overflow: auto;
+	height: 400px;
+	max-height: 30%;
+}
+
+@media only screen and (min-width: 900px) {
+	#char {
+		overflow: visible;
+		height: auto;
+		max-height: 100%;
+	}
 }
 
 img {
@@ -267,11 +298,12 @@ button:active {
 	box-shadow: #dedede;
 }
 
-@media (max-width: 1280px) and (max-device-width: 1280px) {
-	.tier{width:640px;}
-	table{min-width:0px;}
+.settingsContainer {
+	min-width: 134px;
 }
 
+/*
 @media handheld {
 	body{width: 800px;}
 }
+*/
