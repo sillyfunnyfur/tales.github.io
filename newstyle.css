@@ -85,7 +85,7 @@ tr {
 }
 
 table {
-	max-width: 90%;
+	max-width: 94%;
 	margin-left: 3%;
 	margin-right: 3%;
 	border-spacing: 0;
@@ -118,7 +118,8 @@ table {
 }
 
 .tierHolder {
-	width:90%;
+	width:95%;
+	max-width:640px;
 }
 
 .tier {
@@ -319,6 +320,8 @@ button:active {
 	min-width: 134px;
 }
 
+/*
 @media handheld {
 	body{min-width: 776px;}
 }
+*/
