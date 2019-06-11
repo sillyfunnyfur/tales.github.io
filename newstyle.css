@@ -14,10 +14,9 @@ body {
 #controls {
 	/* width: 776px; goodbye funny joke */
 	width: 600px;
-	max-width: 95%;
-	height: 120px;
+	height: 100px;
 	margin: 0 auto;
-	line-height: 9px;
+	line-height: 8px;
 	padding-right: 1px;
 	text-align: left;
 	vertical-align: middle;
@@ -26,8 +25,9 @@ body {
 @media only screen and (min-width: 900px) {
 	#controls {
 		width: 900px;
+		max-width: 95%;
 		height: 80px;
-		line-height:19px;
+		line-height:16px;
 	}
 }
 
@@ -50,16 +50,27 @@ input {
 #buttons {
 	display:inline-block;
 	float:right;
-	margin-top:28px;
+	margin-top: 7px;
+}
+
+@media only screen and (min-width: 900px) {
+	#buttons {
+		margin-top: 28px;
+	}
 }
 
 #tablewrap {
-	padding: 30px 0;
+	padding: 15px 0;
 	background-color: #1A1A1A;
 	min-width: 640px;
 	width: 100%;
 	top: 0;
 	display:block;
+}
+@media only screen and (min-width: 900px) {
+	#tablewrap {
+		padding: 30px 0;
+	}
 }
 
 td {
@@ -104,7 +115,7 @@ table {
 }
 
 .tier {
-	width:inherit;
+	width:100%;
 	max-width: 576px;
 	min-height: 64px;
 	text-align: left;
@@ -169,11 +180,11 @@ div#moveDown {
 	line-height: 0px;
 	padding-bottom: 32px;
 	overflow: auto;
-	height: 400px;
+	height: 192px;
 	max-height: 30%;
 }
 
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 641px) {
 	#char {
 		max-width: 1024px;
 		overflow: visible;
