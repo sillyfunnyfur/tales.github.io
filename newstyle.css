@@ -186,17 +186,12 @@ div#moveDown {
 	margin: 10px auto;
 	line-height: 0px;
 	padding-bottom: 32px;
-	overflow: auto;
 	height: auto;
-	max-height: 30%;
 }
 
 @media only screen and (min-width: 641px) {
 	#char {
 		max-width: 1024px;
-		overflow: visible;
-		height: auto;
-		max-height: 100%;
 	}
 }
 
@@ -325,5 +320,5 @@ button:active {
 }
 
 @media handheld {
-	body{min-width: 640px;}
+	body{min-width: 776px;}
 }
