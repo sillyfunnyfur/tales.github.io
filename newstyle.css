@@ -86,10 +86,17 @@ tr {
 
 table {
 	max-width: 90%;
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 3%;
+	margin-right: 3%;
 	border-spacing: 0;
 	border: solid 3px black;
+}
+
+@media only screen and (min-width: 900px) {
+	table {
+		margin-left: auto;
+		margin-right: auto;
+	}
 }
 
 .labelHolder {
@@ -180,7 +187,7 @@ div#moveDown {
 	line-height: 0px;
 	padding-bottom: 32px;
 	overflow: auto;
-	height: 192px;
+	height: auto;
 	max-height: 30%;
 }
 
@@ -225,6 +232,7 @@ img {
 	position: relative;
 	display:none;
 	width: 728px;
+	min-width: 728px;
 	margin: 0 auto;
     background-color: #fff;
     padding:20px;
