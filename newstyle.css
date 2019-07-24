@@ -225,16 +225,23 @@ img {
 }
 
 #overlay #modalWrapper #modal,#charChange,#helpMenu,#screenshotShow {
-	position: relative;
-	display:none;
-	width: 728px;
-	min-width: 728px;
-	margin: 0 auto;
+    position: relative;
+    display:none;
+    width: 95%;
+    min-width: 728px;
+    margin: 0 auto;
     background-color: #fff;
     padding:20px;
     text-align:center;
 	z-index: 2000;
 }
+
+@media only screen and (min-width: 900px) {
+    #overlay #modalWrapper #modal,#charChange,#helpMenu,#screenshotShow {
+        width: 728px;
+    }
+}
+
 #screenshotShow canvas {
 	width: 95%;
 }
