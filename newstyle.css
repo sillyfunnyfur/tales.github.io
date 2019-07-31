@@ -13,13 +13,19 @@ body {
 
 #controls {
 	/* width: 776px; goodbye funny joke */
-	width: 600px;
-	height: 100px;
+	width: 100vw;
+	min-height: 100px;
 	margin: 0 auto;
 	line-height: 8px;
-	padding-right: 1px;
+	padding-bottom: 18px;
 	text-align: left;
 	vertical-align: middle;
+}
+
+@media only screen and (min-width: 600px) {
+	#controls {
+		padding-bottom: 0px;
+	}
 }
 
 @media only screen and (min-width: 900px) {
@@ -48,6 +54,7 @@ input {
 }
 
 #buttons {
+	max-width: 90vw;
 	display:inline-block;
 	float:right;
 	margin-top: 7px;
@@ -62,7 +69,7 @@ input {
 #tablewrap {
 	padding: 15px 0;
 	background-color: #1A1A1A;
-	min-width: 640px;
+	/* min-width: 640px; */
 	width: 100%;
 	top: 0;
 	display:block;
@@ -77,7 +84,13 @@ td {
 	border: solid 3px black;
 	margin: 0;
 	padding: 0;
-	height: 64px;
+	height: 15vw;
+}
+
+@media only screen and (min-width: 481px) {
+	td {
+		height: 64px;
+	}
 }
 
 tr {
@@ -100,14 +113,21 @@ table {
 }
 
 .labelHolder {
-	min-width: 48px;
-	height: 64px;
+	min-width: 8vw;
+	height: 15vw;
 	transition: background .3s;
 }
 
+@media (min-width: 481px) {
+	.labelHolder {
+		min-width: 48px;
+		height: 64px;
+	}
+}
+
 .label {
-	min-width: 56px;
-	max-width: 128px;
+	min-width: 8vw;
+	max-width: 20vw;
 	line-height: 16px;
 	text-align: center;
 	border: none;
@@ -115,6 +135,13 @@ table {
 	margin: 0;
 	display: inline-block;
 	padding: 4px;
+}
+
+@media (min-width: 641px) {
+	.label {
+		min-width: 56px;
+		max-width: 128px;
+	}
 }
 
 .tierHolder {
@@ -125,12 +152,21 @@ table {
 .tier {
 	width:100%;
 	max-width: 576px;
-	min-height: 64px;
+	min-height: 15vw;
 	text-align: left;
 }
 
+@media (min-width: 481px) {
+	.tier {
+		min-height: 64px;
+	}
+}
+
 @media (min-width: 900px) {
-	.tier{width:640px; max-width: 640px;}
+	.tier {
+		width:640px;
+		max-width: 640px;
+	}
 	.tierHolder {width:640px;}
 	table{min-width:0px;}
 }
@@ -144,12 +180,21 @@ td:last-of-type {
 }
 
 #settings {
-	width: 64px;
-	height: 64px;
+	width: 10vw;
+	height: 10vw;
 	background: url('img/settings.png') center no-repeat;
+	background-size: 7.5vw;
 	cursor: pointer;
 	transition: all .3s;
 	display:inline-block;
+}
+
+@media (min-width: 641px) {
+	#settings {
+		width: 64px;
+		height: 64px;
+		background-size: auto;
+	}
 }
 
 #settings:hover {
@@ -159,30 +204,38 @@ td:last-of-type {
 }
 
 #moveButtons {
-	width: 64px;
-	height: 64px;
+	width: 10vw;
+	height: 10vw;
+	max-width: 64px;
+	max-height: 64px;
 	display:inline-block;
 }
 div#moveUp {
-	height:32px;
-	width:64px;
+	width: 10vw;
+	height: 5vw;
+	max-width: 64px;
+	max-height: 32px;
 	background: url('img/arrowup.png') center no-repeat;
+	background-size: contain;
 	cursor: pointer;
 	transition: all .3s;
 }
 div#moveDown {
-	height:32px;
-	width:64px;
+	width: 10vw;
+	height: 5vw;
+	max-width: 64px;
+	max-height: 32px;
 	background: url('img/arrowdown.png') center no-repeat;
+	background-size: contain;
 	cursor: pointer;
 	transition: all .3s;
 }
+
 #moveButtons div:hover {
 	opacity: .5;
 }
 
 #char {
-	min-width: 600px;
 	width: 90%;
 	margin: 10px auto;
 	line-height: 0px;
@@ -202,12 +255,19 @@ img {
 
 .character {
 	display:inline-block;
-	height: 64px;
-	width: 64px;
+	height: 15vw;
+	width: 15vw;
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-color:white;
+}
+
+@media only screen and (min-width: 481px) {
+	.character {
+		height: 64px;
+		width: 64px;
+	}
 }
 
 #overlay {
@@ -224,11 +284,11 @@ img {
 	transition: opacity .3s;
 }
 
-#overlay #modalWrapper #modal,#charChange,#helpMenu,#screenshotShow {
+.popupMenu {
     position: relative;
-    display:none;
-    width: 95%;
-    min-width: 728px;
+    display: none;
+	font-size: 2.4vw;
+    width: 80%;
     margin: 0 auto;
     background-color: #fff;
     padding:20px;
@@ -236,11 +296,27 @@ img {
 	z-index: 2000;
 }
 
+.popupMenu h1 {
+	font-size: 3.6vw; 
+}
+
+@media only screen and (min-width: 481px) {
+	.popupMenu {
+		font-size: inherit;
+	}
+
+}
+
 @media only screen and (min-width: 900px) {
-    #overlay #modalWrapper #modal,#charChange,#helpMenu,#screenshotShow {
+    .popupMenu {
         width: 728px;
     }
+	.popupMenu h1 {
+		font-size: 32px; 
+	}
 }
+
+
 
 #screenshotShow canvas {
 	width: 95%;
@@ -302,19 +378,36 @@ button:active {
 }
 
 .characterCheckWrap {
-	width: 36%;
-	padding-left: 4%;
-	padding-right: 4%;
-	padding-bottom: 1px;
+	width: 50%;
+	padding-left: 0%;
+	padding-right: 0%;
+	padding-bottom: 0px;
 	display: inline-block;
 }
 
+@media only screen and (min-width: 900px) {
+	.characterCheckWrap {
+		width: 36%;
+		padding-left: 4%;
+		padding-right: 4%;
+		padding-bottom: 1px;
+	}
+}
+
 .selectAllWrap {
-	width: 16%;
+	width: 26%;
 	padding-top: 2px;
-	padding-left: 36%;
-	padding-right: 36%;
+	padding-left: 31%;
+	padding-right: 31%;
 	display:inline-block;
+}
+
+@media only screen and (min-width: 900px) {
+	.selectAllWrap {
+		width: 16%;
+		padding-left: 36%;
+		padding-right: 36%;
+	}
 }
 
 .ui-tooltip {
@@ -324,11 +417,11 @@ button:active {
 }
 
 .settingsContainer {
-	min-width: 134px;
+	min-width: 20vw;
 }
 
-/*
-@media handheld {
-	body{min-width: 776px;}
+@media only screen and (min-width: 641px) {
+	.settingsContainer {
+		min-width: 134px;
+	}
 }
-*/
