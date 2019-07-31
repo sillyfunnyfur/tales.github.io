@@ -84,10 +84,10 @@ td {
 	border: solid 3px black;
 	margin: 0;
 	padding: 0;
-	height: 15vw;
+	height: 10vw;
 }
 
-@media only screen and (min-width: 481px) {
+@media only screen and (min-width: 641px) {
 	td {
 		height: 64px;
 	}
@@ -114,11 +114,11 @@ table {
 
 .labelHolder {
 	min-width: 8vw;
-	height: 15vw;
+	height: 10vw;
 	transition: background .3s;
 }
 
-@media (min-width: 481px) {
+@media (min-width: 641px) {
 	.labelHolder {
 		min-width: 48px;
 		height: 64px;
@@ -152,11 +152,11 @@ table {
 .tier {
 	width:100%;
 	max-width: 576px;
-	min-height: 15vw;
+	min-height: 10vw;
 	text-align: left;
 }
 
-@media (min-width: 481px) {
+@media (min-width: 641px) {
 	.tier {
 		min-height: 64px;
 	}
@@ -255,15 +255,15 @@ img {
 
 .character {
 	display:inline-block;
-	height: 15vw;
-	width: 15vw;
+	height: 10vw;
+	width: 10vw;
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-color:white;
 }
 
-@media only screen and (min-width: 481px) {
+@media only screen and (min-width: 641px) {
 	.character {
 		height: 64px;
 		width: 64px;
