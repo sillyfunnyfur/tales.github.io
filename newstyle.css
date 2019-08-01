@@ -140,9 +140,16 @@ table {
 	text-align: center;
 	border: none;
 	font-weight: 600;
+	font-size: 3.3vw;
 	margin: 0;
 	display: inline-block;
 	padding: 4px;
+}
+
+@media (min-width: 481px) {
+	.label {
+		font-size: 16px;
+	}
 }
 
 @media (min-width: 641px) {
@@ -296,7 +303,7 @@ img {
     position: relative;
     display: none;
 	font-size: 2.4vw;
-    width: 80%;
+    width: 80vw;
     margin: 0 auto;
     background-color: #fff;
     padding:20px;
@@ -335,14 +342,16 @@ img {
 }
 
 #colorselect {
-	width: 720px;
-	height: 40px;
+	width: 98%;
+	height: 4.4vw;
 	margin: 0 4px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #colorselect span {
-	width: 48px;
-	height: 40px;
+	width: 5.2vw;
+	height: 4.4vw;
 	margin: 0;
 	display: inline-block;
 	transition: box-shadow .1s;
@@ -352,6 +361,30 @@ img {
 #colorselect span.selected {
 	box-shadow: inset 4px 4px red,
 				inset -4px -4px red;
+}
+
+@media only screen and (max-width: 641px) {
+	#colorselect {
+		width: 260px;
+		height: 60px;
+	}
+	#colorselect span {
+		width: 32px;
+		height: 30px;
+		margin: 0;
+	}
+}
+
+@media only screen and (min-width: 900px) {
+	#colorselect {
+		width: 720px;
+		height: 40px;
+	}
+	#colorselect span {
+		width: 48px;
+		height: 40px;
+		margin: 0;
+	}
 }
 
 #close {
