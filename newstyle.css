@@ -21,7 +21,7 @@ textarea{
 
 #controls {
 	/* width: 776px; goodbye funny joke */
-	width: 100vw;
+	width: 100%;
 	min-height: 100px;
 	margin: 0 auto;
 	line-height: 8px;
