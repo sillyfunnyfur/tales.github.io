@@ -80,7 +80,7 @@ input {
 	/* min-width: 640px; */
 	width: 100%;
 	top: 0;
-	display:block;
+	display: block;
 }
 @media only screen and (min-width: 900px) {
 	#tablewrap {
@@ -105,16 +105,17 @@ tr {
 	line-height: 0px;
 }
 
-table {
+#tablemain {
 	max-width: 94%;
 	margin-left: 3%;
 	margin-right: 3%;
 	border-spacing: 0;
 	border: solid 3px black;
+	background-color: #1A1A1A;
 }
 
 @media only screen and (min-width: 900px) {
-	table {
+	#tablemain {
 		margin-left: auto;
 		margin-right: auto;
 	}
