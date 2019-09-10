@@ -325,7 +325,7 @@
 				$("#charChange").css("display", "none");
 				$("#helpMenu").css("display", "none");
 				$("#screenshotShow").css("display", "none");
-				$("canvas").remove();
+				$("#screenshotShow canvas").remove();
 			} else if(clicked == "screenshot") { // take a screenshot
 				$("#exportcode").val(toCode());
 				$("#modal").css("display", "none");
@@ -339,11 +339,14 @@
 					$("#hidebuttons").click();
 				}
 				$("#tablemain").css("margin", "3px");
+				$("#tablemain").css("max-width", "100%");
 				window.scrollTo(0,0);
 				html2canvas(document.getElementById("tablemain")).then(function(canvas) {
 					$("#screenshotShow span").after(canvas);
 					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
 					$("#tablemain").removeAttr('style');
+					$("#screenshotShow canvas").css("max-width", "100%");
+					$("#screenshotShow canvas").css("height", "auto");
 				});
 
 			} else if(clicked == "hidebuttons") { // hide the buttons
@@ -369,7 +372,7 @@
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
 				$("#modal").css("display", "none");
-				$("canvas").remove();
+				$("#screenshotShow canvas").remove();
 			} else if (clicked == "addRowUp") { // add a row on top of the current row
 				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
 				updateTiers();

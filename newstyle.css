@@ -64,7 +64,7 @@ input {
 #buttons {
 	max-width: 90vw;
 	display:inline-block;
-	float:right;
+	/* float:right; */
 	margin-top: 7px;
 }
 
@@ -330,12 +330,6 @@ img {
 	.popupMenu h1 {
 		font-size: 32px; 
 	}
-}
-
-
-
-#screenshotShow canvas {
-	width: 95%;
 }
 
 #helpMenu {
