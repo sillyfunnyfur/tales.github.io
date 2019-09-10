@@ -4,9 +4,9 @@
 	<link rel="icon" type="image/x-icon" href= "icon.png"/>
 	<title>Fire Emblem Tier List Maker</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
-	<!--<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">!-->
 	<link href="newstyle.css" rel="stylesheet">
 	<link href="dragula.min.css" rel="stylesheet">
+	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@e5e_ebooks" />
 	<meta property='og:image' content='https://fe-tier-list-maker.github.io/preview_image.png'/>
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 	
-	<div id="tablewrap"><table><tbody>
+	<div id="tablewrap"><table id="tablemain"><tbody>
 		<tr>
 			<td class="labelHolder" contenteditable="true"><span class="label">S</span></td>
 			<td><div class="tier sort" id="rows"></div></td>
@@ -116,6 +116,7 @@
 				<p style="text-align: left;">Your code should appear in the text box below. Paste a code into the box below and click "Run code" to load another tier list.</p>
 				<p style="text-align: left;">Note that any game that does not appear in the loaded list will be deselected.</p>
 				<textarea id="exportcode" rows="8"></textarea><div><button id="runCode">Run code</button></div>
+				<div><button id="screenshot">Take screenshot</button></div>
 			</div>
 		</div>
 	</div>
@@ -123,6 +124,7 @@
 	<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>!-->
 	<script src="allnames.js"></script>
 	<script src="dragula.min.js"></script>
+	<script src="html2canvas.min.js"></script>
 	<script>
 		dragula({
 			isContainer: function (el) {
@@ -323,6 +325,7 @@
 				$("#charChange").css("display", "none");
 				$("#helpMenu").css("display", "none");
 				$("#screenshotShow").css("display", "none");
+				$("#screenshotShow canvas").remove();
 			} else if(clicked == "screenshot") { // take a screenshot
 				$("#exportcode").val(toCode());
 				$("#modal").css("display", "none");
@@ -332,14 +335,20 @@
 				$("#screenshotShow").css("display","block");
 				$("#overlay").css("opacity", 1);
 				$("#overlay").css("visibility", "visible");
-				$("td:last-of-type").css("display","none");
-				html2canvas($("table"), {
-				  onrendered: function(canvas) {
+				if (!screenshotMode) {
+					$("#hidebuttons").click();
+				}
+				$("#tablemain").css("margin", "3px");
+				$("#tablemain").css("max-width", "100%");
+				window.scrollTo(0,0);
+				html2canvas(document.getElementById("tablemain")).then(function(canvas) {
 					$("#screenshotShow span").after(canvas);
-					$("td:last-of-type").css("display","table-cell");
 					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
-				  }
+					$("#tablemain").removeAttr('style');
+					$("#screenshotShow canvas").css("max-width", "100%");
+					$("#screenshotShow canvas").css("height", "auto");
 				});
+
 			} else if(clicked == "hidebuttons") { // hide the buttons
 				if (screenshotMode) {
 					$("td:last-of-type").css("display","table-cell");
@@ -363,6 +372,7 @@
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
 				$("#modal").css("display", "none");
+				$("#screenshotShow canvas").remove();
 			} else if (clicked == "addRowUp") { // add a row on top of the current row
 				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
 				updateTiers();
