@@ -228,31 +228,19 @@
 				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
 			}
 			$("#modal span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
-			$("#modal").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#modal").css("top",alignPopup($("#modal")));
+			openPopup("#modal");
 		});
 		
 		$(document).on("click", "#characters", function() { // open game changer modal
-			$("#charChange").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#charChange").css("top",alignPopup($("#charChange")));
+			openPopup("#charChange");
 		});
 		
 		$(document).on("click", "#help", function() { // open help modal
-			$("#helpMenu").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#helpMenu").css("top",alignPopup($("#helpMenu")));
+			openPopup("#helpMenu");
 		});
 		
 		$(document).on("click", "#save", function() { // open save/load modal
-			$("#screenshotShow").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
+			openPopup("#screenshotShow");
 			$("#screenshotShow").find("textarea").val(toCode());
 		});
 		
@@ -319,19 +307,13 @@
 		$(document).on("click", function(e) {
 			clicked = e.target.id;
 			if(clicked == "overlay" || clicked == "modalWrapper" || clicked == "close") { // close modals
+				closePopups();
+				$("#screenshotShow").css("display", "none");
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
-				$("#modal").css("display", "none");
-				$("#charChange").css("display", "none");
-				$("#helpMenu").css("display", "none");
-				$("#screenshotShow").css("display", "none");
-				$("#screenshotShow canvas").remove();
 			} else if(clicked == "screenshot") { // take a screenshot
 				$("#exportcode").val(toCode());
-				$("#modal").css("display", "none");
-				$("#charChange").css("display", "none");
-				$("#helpMenu").css("display", "none");
-				$("#screenshotShow canvas").remove();
+				closePopups();
 				$("#screenshotShow").css("display","block");
 				$("#overlay").css("opacity", 1);
 				$("#overlay").css("visibility", "visible");
@@ -371,8 +353,7 @@
 				updateTiers();
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
-				$("#modal").css("display", "none");
-				$("#screenshotShow canvas").remove();
+				closePopups();
 			} else if (clicked == "addRowUp") { // add a row on top of the current row
 				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
 				updateTiers();
@@ -401,6 +382,20 @@
 		$("#resetLabel").on("click", function() {
 			currentTier.find(".labelHolder").html('<span class="label">New Label</label>');
 		});
+
+		function openPopup(popup) {
+			$(popup).css("display","block");
+			$("#overlay").css("opacity", 1);
+			$("#overlay").css("visibility", "visible");
+			$(popup).css("top", alignPopup($(popup)));
+		}
+
+		function closePopups() {
+			$("#modal").css("display", "none");
+			$("#charChange").css("display", "none");
+			$("#helpMenu").css("display", "none");
+			$("#screenshotShow canvas").remove();
+		}
 		
 		// http://stackoverflow.com/a/3971432 thanks Zack Katz :D
 		function rgb2hex(rgb) {
