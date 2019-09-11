@@ -5,7 +5,6 @@
 	<title>Fire Emblem Tier List Maker</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
 	<link href="../newstyle.css" rel="stylesheet">
-	<link href="../dragula.min.css" rel="stylesheet">
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@e5e_ebooks" />
@@ -121,17 +120,9 @@
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
-	<script src="../dragula.min.js"></script>
+	<script src="../draggabilly.pkgd.min.js"></script>
 	<script src="../html2canvas.min.js"></script>
 	<script>
-		dragula({
-			isContainer: function (el) {
-				return el.classList.contains('sort');
-			}
-		}).on("drop", function() {
-			localStorage.setItem("TierListMakerCode",toCode());
-		});
-		
 		// character images
 		var singleChar = "<div class='character'></div>";
 		var singleCheckWrap = "<div class='characterCheckWrap'></div>";
@@ -293,6 +284,7 @@
 					$(this).remove();
 				});
 			}
+			var $draggable = $('.character').draggabilly();
 		});
 		
 		$(document).on("change", ".selectAll", function() { // add/remove all characters
