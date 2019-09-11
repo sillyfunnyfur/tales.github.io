@@ -2,9 +2,10 @@
 <html>
 <head>
 	<link rel="icon" type="image/x-icon" href= "icon.png"/>
-	<title>Fire Emblem Tier List Maker</title>
+	<title>Fire Emblem Venn Diagram Maker</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
 	<link href="../newstyle.css" rel="stylesheet">
+	<link href="venn.css" rel="stylesheet">
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@e5e_ebooks" />
@@ -18,7 +19,7 @@
 </head>
 <body>
 	<div id="controls">
-		<h1 style="padding-left: 8px;"><span>neat</span> TIER LIST MAKER</h1>
+		<h1 style="padding-left: 8px;"><span>neat</span> DIAGRAM MAKER</h1>
 		<div id="buttons">
 			<button id="dock">Dock tier list</button>
 			<button id="hidebuttons">Hide controls</button>
@@ -29,43 +30,9 @@
 		</div>
 	</div>
 	
-	<div id="tablewrap"><table id="tablemain"><tbody>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">S</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">A</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">B</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">C</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">D</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">E</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">F</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-	</tbody></table>
+	<div id="tablewrap">
+		<div id="tablemain">
+		</div>
 	</div>
 	
 	<div id="char" class="sort">

@@ -1,0 +1,8 @@
+#tablemain {
+    background-image: url('venn.png');
+    background-size: cover;
+    width: 70vw;
+    height: 56vw;
+    margin-left:auto;
+    margin-right:auto;
+}
