@@ -63,8 +63,8 @@ input {
 
 #buttons {
 	max-width: 90vw;
-	display:inline-block;
-	/* float:right; */
+	display: block;
+	float: right;
 	margin-top: 7px;
 }
 
@@ -276,7 +276,7 @@ img {
 	background-position: center bottom;
 	background-repeat: no-repeat;
 	background-size: contain;
-	background-color:white;
+	/* background-color: white; */
 }
 
 @media only screen and (min-width: 641px) {
