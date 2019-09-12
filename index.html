@@ -95,14 +95,14 @@
 			<div id="helpMenu" class="popupMenu">
 				<h1>HELP</h1>
 				<span id="close"></span>
-				<!-- <p>This is like a Smash Tier List Maker, but with Fire Emblem instead.</p> !-->
+				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a>, including a Venn Diagram maker!</p>
 				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
 				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
 				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
 				<p>Clicking on the "Dock tier list" button will <strong>stick the tier list to the top of the window.</strong>
 				This can be useful if you have a large number of characters on-screen and don't want to scroll up and down
 				as you drag them into your list. Clicking the button again will return the list to its original position.</p>
-				<!--  <p><strong>To take a screenshot,</strong> you can click the "Hide controls" button to make the list look cleaner. Then, use a screenshot tool such as Snipping Tool on Windows to take a screenshot.</p> !-->
+				<p>You can take a screenshot or generate code to load your current list later in the "Save/Load" tab.</p>
 				<p>There is a gear next to each tier in the tierlist. If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
 				<p>Next to the gear are two arrows which will let you <strong>move a tier up and down a level</strong>.</p>
 				<p><strong>You can change the name of the tier</strong> by clicking on the tier label and typing in there. If this doesn't work, you can change or reset it in the tier's settings menu (the gear).</p>
@@ -112,19 +112,20 @@
 			<div id="screenshotShow" class="popupMenu">
 				<h1>SAVE/LOAD</h1>
 				<span id="close"></span>
-				<!--<p>Your image should appear above. You can copy or save this image. Try uploading it to an image hosting website such as <a href="http://imgur.com">Imgur</a>. Alternatively, copy the code below to share an editable version of your tierlist. Just paste a code into the box below and click "Run code" to access it.</p>!-->
-				<p style="text-align: left;">Your code should appear in the text box below. Paste a code into the box below and click "Run code" to load another tier list.</p>
+				<p style="text-align: left;">Your image will appear above after pressing "Take screenshot". You can copy or save this image.</p>
+				<div><button id="screenshot">Take screenshot</button></div>
+				<p style="text-align: left;">Alternatively, copy the code below to share an editable version of your tierlist. Paste a code into the box below and click "Run code" to load another tier list.</p>
 				<p style="text-align: left;">Note that any game that does not appear in the loaded list will be deselected.</p>
 				<textarea id="exportcode" rows="8"></textarea><div><button id="runCode">Run code</button></div>
-				<div><button id="screenshot">Take screenshot</button></div>
 			</div>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 	<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>!-->
-	<script src="allnames.js"></script>
+	<!--<script src="allnames.js"></script>-->
 	<script src="dragula.min.js"></script>
 	<script src="html2canvas.min.js"></script>
+	<script src="common.js"></script>
 	<script>
 		dragula({
 			isContainer: function (el) {
@@ -133,48 +134,6 @@
 		}).on("drop", function() {
 			localStorage.setItem("TierListMakerCode",toCode());
 		});
-		
-		// character images
-		var singleChar = "<div class='character'></div>";
-		var singleCheckWrap = "<div class='characterCheckWrap'></div>";
-		var selectAllWrap = "<div class='selectAllWrap'></div>";
-		var gameFe = [	["fe", 0, ""],
-							["mote2", 44, "Mystery of the Emblem Book 2"],
-							["mote1", 30, "Mystery Book 1 and Extra"],
-							["nm", 82, "New Mystery of the Emblem"],
-							["nme", 11, "New Mystery Extra"],
-							["sov", 33, "Shadows of Valentia"],
-							["sove", 14, "Shadows of Valentia Extra"],
-							["ghw1", 23, "Genealogy Part 1"],
-							["ghw1e", 22, "Genealogy Part 1 Extra"],
-							["ghw2", 39, "Genealogy Part 2"],
-							["ghw2e", 23, "Genealogy Part 2 Extra"],
-							["th776", 51, "Thracia 776"],
-							["th776e", 23, "Thracia 776 Extra"],
-							["bib", 53, "Binding Blade"],
-							["bibe", 16, "Binding Blade Extra"],
-							["bla", 43, "Blazing Blade"],
-							["blae", 31, "Blazing Blade Extra"],
-							["sto", 33, "Sacred Stones"],
-							["stoe", 12, "Sacred Stones Extra"],
-							["por", 45, "Path of Radiance"],
-							["pore", 12, "Path of Radiance Extra"],
-							["rd", 72, "Radiant Dawn"],
-							["rde", 22, "Radiant Dawn Extra"],
-							["awa", 44, "Awakening"],
-							["awae", 10, "Awakening Extra"],
-							["frev", 20, "Fates Neutral"],
-							["fbr", 30, "Fates Birthright"],
-							["fcq", 31, "Fates Conquest"],
-							["fex", 14, "Fates Extra"],
-							["thrh", 48, "Three Houses"],
-							["thrhsp", 44, "Three Houses Spoilers"],
-							["tms", 13, "Tokyo Mirage Sessions"],
-							["hoc", 20, "Heroes"],
-							["woc", 4, "Warriors"],
-							["tlp", 55, "The Last Promise"],
-						];
-		// ["trs", 1, "TearRing Saga"],
 		
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
 		
@@ -196,16 +155,12 @@
 		var tierIndex;
 		var currentColor;
 		var colorIndex;
-		var currentGame;
-		var currentGameChars = gameFe;
-		var characters;
-		var characterId;
 					  
 		for (var i = 0; i < tierDefaults.length; i++) {
 			tierDefaults[i][0].find(".labelHolder").css("background",colors[tierDefaults[i][1]]);
 		}
 		
-		$(document).on("click", "#dock", function() { // open game changer modal
+		$(document).on("click", "#dock", function() {
 			if (listStickied) {
 				$("#tablewrap").css("position","static");
 				$("#dock").text("Dock tier list");
@@ -228,32 +183,7 @@
 				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
 			}
 			$("#modal span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
-			$("#modal").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#modal").css("top",alignPopup($("#modal")));
-		});
-		
-		$(document).on("click", "#characters", function() { // open game changer modal
-			$("#charChange").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#charChange").css("top",alignPopup($("#charChange")));
-		});
-		
-		$(document).on("click", "#help", function() { // open help modal
-			$("#helpMenu").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#helpMenu").css("top",alignPopup($("#helpMenu")));
-		});
-		
-		$(document).on("click", "#save", function() { // open save/load modal
-			$("#screenshotShow").css("display","block");
-			$("#overlay").css("opacity", 1);
-			$("#overlay").css("visibility", "visible");
-			$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
-			$("#screenshotShow").find("textarea").val(toCode());
+			openPopup("#modal");
 		});
 		
 		$(document).on("click", "#colorselect span", function() { // change row label
@@ -264,17 +194,12 @@
 			currentTier.find(".labelHolder").css("background-color",$(this).css("background-color"));
 			updateTiers();
 		});
-		
-		/*
-		$(function() {
-			$( document ).tooltip({
-				show: false,
-				hide: false,
-				position: { my: "top", at: "right bottom" }
-			});
+
+		$(document).on("click", "#save", function() { // open save/load modal
+			openPopup("#screenshotShow");
+			$("#screenshotShow").find("textarea").val(toCode());
 		});
-		*/
-		
+
 		$(document).on("change", ".characterCheck", function() { // add/remove characters
 			gameId = ($(this).attr("id"));
 			gameClass = ($(this).attr("class"));
@@ -282,7 +207,7 @@
 			gameIndex = gameClass.replace(/\D/g,'');
 			// alternative 
 			// gameInfo = currentGameChars.find(function(curr) { return curr[0] == gameId;});
-			
+
 			if($(this).is(":checked")) {
 				for (var k = 0; k <= currentGameChars[gameIndex][1]; k++) {
 					$("#char div:last-child").after(singleChar);
@@ -297,21 +222,6 @@
 			}
 		});
 		
-		$(document).on("change", ".selectAll", function() { // add/remove all characters
-			if($(this).is(":checked")) {
-				$(".characterCheck").each( function() {
-					if (!$(this).is(":checked" )) {
-						$(this).prop('checked', true).change();
-					}
-				});
-			} else {
-				$(".characterCheck").each( function() {
-					$(this).prop('checked', false).change();
-				});
-			}
-		});
-		
-		
 		$(document).on("dblclick", ".character", function() { // move to highest tier instantly
 			$(this).detach().appendTo('#rows');
 		});
@@ -319,19 +229,13 @@
 		$(document).on("click", function(e) {
 			clicked = e.target.id;
 			if(clicked == "overlay" || clicked == "modalWrapper" || clicked == "close") { // close modals
+				closePopups();
+				$("#screenshotShow").css("display", "none");
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
-				$("#modal").css("display", "none");
-				$("#charChange").css("display", "none");
-				$("#helpMenu").css("display", "none");
-				$("#screenshotShow").css("display", "none");
-				$("#screenshotShow canvas").remove();
 			} else if(clicked == "screenshot") { // take a screenshot
-				$("#exportcode").val(toCode());
-				$("#modal").css("display", "none");
-				$("#charChange").css("display", "none");
-				$("#helpMenu").css("display", "none");
-				$("#screenshotShow canvas").remove();
+				$("#exportcode").val(toCode()); // generate save/load code
+				closePopups();
 				$("#screenshotShow").css("display","block");
 				$("#overlay").css("opacity", 1);
 				$("#overlay").css("visibility", "visible");
@@ -343,10 +247,10 @@
 				window.scrollTo(0,0);
 				html2canvas(document.getElementById("tablemain")).then(function(canvas) {
 					$("#screenshotShow span").after(canvas);
-					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
-					$("#tablemain").removeAttr('style');
 					$("#screenshotShow canvas").css("max-width", "100%");
 					$("#screenshotShow canvas").css("height", "auto");
+					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
+					$("#tablemain").removeAttr('style'); // clear css changes
 				});
 
 			} else if(clicked == "hidebuttons") { // hide the buttons
@@ -371,8 +275,7 @@
 				updateTiers();
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
-				$("#modal").css("display", "none");
-				$("#screenshotShow canvas").remove();
+				closePopups();
 			} else if (clicked == "addRowUp") { // add a row on top of the current row
 				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
 				updateTiers();
@@ -401,15 +304,6 @@
 		$("#resetLabel").on("click", function() {
 			currentTier.find(".labelHolder").html('<span class="label">New Label</label>');
 		});
-		
-		// http://stackoverflow.com/a/3971432 thanks Zack Katz :D
-		function rgb2hex(rgb) {
-			rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
-			function hex(x) {
-				return ("0" + parseInt(x).toString(16)).slice(-2);
-			}
-			return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-		}
 		
 		function updateTiers() {
 			tierlist = [];
@@ -561,10 +455,6 @@
 				$("#tablewrap").css("display","table-cell");
 			else
 				$("#tablewrap").css("display","block");
-		}
-		
-		function alignPopup(popup) {
-			return Math.floor(($(window).height() - popup.height())/2)+"px";
 		}
 		
 		$(document).ready( function() {

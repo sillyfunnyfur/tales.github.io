@@ -1,0 +1,17 @@
+#tablemain {
+    background-image: url('venn.png');
+    width: 88vw;
+    height: 66vw;
+}
+
+#leftHolder {
+    left: 40vw;
+}
+
+#midHolder {
+    left: 50vw;
+}
+
+#rightHolder {
+    left: 60vw;
+}
