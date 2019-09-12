@@ -1,19 +1,14 @@
-#tablemain {
-    background-color: transparent;
-    background-size: cover;
-    margin-left: auto;
-    margin-right: auto;
-    border: 0;
-}
-
-#tablewrap {
-    text-align: center;
-    background-color: #CFCFCF; /* crimson flower */
-}
-
-.labelHolder {
+.handle {
     position: absolute;
-    height: auto;
+    left: -25%;
+    top: -25%;
+    padding-top:50%;
+    width: 50%;
+}
+
+.handle:hover {
+    background-color:rgba(0, 0, 0, 0.1);
+    cursor: move;
 }
 
 .label {
@@ -26,15 +21,30 @@
 	}
 }
 
-.handle {
+.labelHolder {
     position: absolute;
-    left: -25%;
-    top: -25%;
-    padding-top:50%;
-    width: 50%;
+    height: auto;
 }
 
-.handle:hover {
-    background-color:rgba(0, 0, 0, 0.1);
-    cursor: move;
+#sizeSlider {
+    float: none;
+    min-width: 60%;
+}
+
+.slideContainer {
+    display: inline-block;
+    width: 100%;
+}
+
+#tablemain {
+    background-color: transparent;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0;
+}
+
+#tablewrap {
+    text-align: center;
+    background-color: #CFCFCF; /* crimson flower */
 }
