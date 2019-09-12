@@ -1,0 +1,40 @@
+#tablemain {
+    background-color: transparent;
+    background-size: cover;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0;
+}
+
+#tablewrap {
+    text-align: center;
+    background-color: #CFCFCF; /* crimson flower */
+}
+
+.labelHolder {
+    position: absolute;
+    height: auto;
+}
+
+.label {
+    font-weight: normal;
+}
+
+@media (min-width: 641px) {
+	.label {
+		font-size: 18px;
+	}
+}
+
+.handle {
+    position: absolute;
+    left: -25%;
+    top: -25%;
+    padding-top:50%;
+    width: 50%;
+}
+
+.handle:hover {
+    background-color:rgba(0, 0, 0, 0.1);
+    cursor: move;
+}
