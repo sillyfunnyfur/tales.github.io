@@ -30,15 +30,15 @@
 	</div>
 	
 	<div id="tablewrap">
-		<div class='labelHolder' style='left:40vw;'>
+		<div class='labelHolder' id="leftHolder">
 			<div class='handle'></div>
 			<span class='label' contenteditable='true'>Left</span>
 		</div>
-		<div class='labelHolder' style='left:50vw;'>
+		<div class='labelHolder' id="midHolder">
 			<div class='handle'></div>
 			<span class='label' contenteditable='true' >Middle</span>
 		</div>
-		<div class='labelHolder' style='left:60vw;'>
+		<div class='labelHolder' id="rightHolder">
 			<div class='handle'></div>
 			<span class='label' contenteditable='true'>Right</span>
 		</div>
@@ -66,17 +66,10 @@
 			<div id="helpMenu" class="popupMenu">
 				<h1>HELP</h1>
 				<span id="close"></span>
-				<!-- <p>This is like a Smash Tier List Maker, but with Fire Emblem instead.</p> !-->
+				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a> on this site!</p>
 				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
 				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
-				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
-				<p>Clicking on the "Dock tier list" button will <strong>stick the tier list to the top of the window.</strong>
-				This can be useful if you have a large number of characters on-screen and don't want to scroll up and down
-				as you drag them into your list. Clicking the button again will return the list to its original position.</p>
-				<!--  <p><strong>To take a screenshot,</strong> you can click the "Hide controls" button to make the list look cleaner. Then, use a screenshot tool such as Snipping Tool on Windows to take a screenshot.</p> !-->
-				<p>There is a gear next to each tier in the tierlist. If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
-				<p>Next to the gear are two arrows which will let you <strong>move a tier up and down a level</strong>.</p>
-				<p><strong>You can change the name of the tier</strong> by clicking on the tier label and typing in there. If this doesn't work, you can change or reset it in the tier's settings menu (the gear).</p>
+				<p>You can click and drag characters into the diagram.</p>
 				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
 				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/e5e_ebooks">Twitter</a> or elsewhere.</p>
 			</div>
@@ -175,6 +168,10 @@
 					$("#tablemain").removeAttr('style');
 				});
 			} else if (clicked == "reset") {
+				for (var i = 0; i < $(".labelHolder").length; i++) {
+					$(".labelHolder:nth-of-type("+(i+1)+")").removeAttr('style');
+					$(".labelHolder:nth-of-type("+(i+1)+") .label").html("New");
+				}
 				changeGame(currentGameChars);
 			} 
 		});

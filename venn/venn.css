@@ -19,8 +19,26 @@
     height: auto;
 }
 
+#leftHolder {
+    left: 40vw;
+}
+
+#midHolder {
+    left: 50vw;
+}
+
+#rightHolder {
+    left: 60vw;
+}
+
 .label {
     font-weight: normal;
+}
+
+@media (min-width: 641px) {
+	.label {
+		font-size: 18px;
+	}
 }
 
 .handle {
