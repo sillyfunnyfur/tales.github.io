@@ -7,6 +7,7 @@
 	<link href="../newstyle.css" rel="stylesheet">
 	<link href="../toolstyle.css" rel="stylesheet">
 	<link href="venn.css" rel="stylesheet">
+	<meta charset="UTF-8">
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@e5e_ebooks" />
@@ -16,7 +17,6 @@
 	<meta property='og:description' content='Everyone is here!' />
 	<meta name="keywords" content="Fire Emblem,Tier List,Three Houses,FE,Awakening,Fates">
 	<meta name="viewport" content="user-scalable=no">
-	<meta charset="UTF-8"> 
 </head>
 <body>
 	<div id="controls">
@@ -55,6 +55,13 @@
 			<div id="modal" class="popupMenu">
 				<h1>OPTIONS</h1>
 				<span id="close"></span>
+				<p>Diagram size:</p>
+				<div>
+					<div class="slideContainer">
+						<input type="range" min="50" max="100" value="100" class="slider" id="sizeSlider">
+						<span id='currSize'>100%</span>
+					</div>
+				</div>
 				<p>Choose background color:</p>
 				<div id="colorselect"><span style="background:#FF7F7F"></span><span style="background:#FFBF7F"></span><span style="background:#FFDF7F"></span><span style="background:#FFFF7F"></span><span style="background:#BFFF7F"></span><span style="background:#7FFF7F"></span><span style="background:#7FFFFF"></span><span style="background:#7FBFFF"></span><span style="background:#7F7FFF"></span><span style="background:#FF7FFF"></span><span style="background:#BF7FBF"></span><span style="background:#1A1A1A"></span><span style="background:#858585"></span><span style="background:#CFCFCF"></span><span style="background:#FFFFFF"></span></div>
 			</div>
@@ -70,7 +77,8 @@
 				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a> on this site!</p>
 				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
 				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
-				<p>You can click and drag characters into the diagram.</p>
+				<p>You can click and drag characters into the diagram. Dragging from the left of a label will allow you to move it.</p>
+				<p>You can <strong>change the size and colour</strong> of the diagram in the Options menu.</p>
 				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
 				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/e5e_ebooks">Twitter</a> or elsewhere.</p>
 			</div>
@@ -90,10 +98,10 @@
 		$(document).on("click", "#options", function() { // open options modal
 			currentColor = $("#tablewrap").css("background-color");
 			colorIndex = colors.indexOf(rgb2hex(currentColor).toUpperCase());
-			for (var i = 0; i < $("#modal span").length; i++) {
-				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
+			for (var i = 0; i < $("#colorselect span").length; i++) {
+				$("#colorselect span:nth-of-type("+(i+1)+")").attr("class","nope");
 			}
-			$("#modal span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
+			$("#colorselect span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
 			openPopup("#modal");
 		});
 		
@@ -114,8 +122,6 @@
 				$("#screenshotShow").css("display","block");
 				$("#overlay").css("opacity", 1);
 				$("#overlay").css("visibility", "visible");
-				// $("#tablemain").css("margin", "3px");
-				// $("#tablemain").css("max-width", "100%");
 				window.scrollTo(0,0);
 				html2canvas(document.body, {
 					width: $("#tablemain").width(),
@@ -127,7 +133,6 @@
 					$("#screenshotShow canvas").css("max-width", "70%");
 					$("#screenshotShow canvas").css("height", "auto");
 					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
-					$("#tablemain").removeAttr('style');
 				});
 			} else if (clicked == "reset") {
 				for (var i = 0; i < $(".labelHolder").length; i++) {
@@ -137,10 +142,17 @@
 				changeGame(currentGameChars);
 			} 
 		});
+
+		$(document).on("input", "#sizeSlider", function() {
+			$("#currSize").html($(this).val() + "%");
+			$("#tablemain").css("width", ($(this).val() / 100) * 88 + "vw");
+			$("#tablemain").css("height", ($(this).val() / 100) * 66 + "vw");
+		});
 		
 		$(document).ready( function() {
 			$("#char").html("<div></div>");
 			changeGame(gameFe);
+			$("#sizeSlider").val(100);
 			$draggable = $('.labelHolder').draggabilly({ handle: '.handle' });
 		});
 	</script>
