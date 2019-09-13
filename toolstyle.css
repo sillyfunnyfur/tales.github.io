@@ -24,7 +24,7 @@
 .labelHolder {
     position: absolute;
     height: auto;
-    z-index: 2000;
+    z-index: 1000;
 }
 
 #sizeSlider {
