@@ -1,0 +1,133 @@
+td {
+	border: solid 3px black;
+	margin: 0;
+	padding: 0;
+	height: 15vw;
+}
+
+@media only screen and (min-width: 641px) {
+	td {
+		height: 96px;
+	}
+}
+
+.labelHolder {
+	min-width: 15vw;
+	height: 15vw;
+	transition: background .3s;
+}
+
+@media (min-width: 641px) {
+	.labelHolder {
+		min-width: 96px;
+		height: 96px;
+	}
+}
+
+.label {
+	min-width: 8vw;
+	max-width: 20vw;
+}
+
+@media (min-width: 481px) {
+	.label {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 641px) {
+	.label {
+		min-width: 56px;
+		max-width: 128px;
+	}
+}
+
+.tierHolder {
+	width:95%;
+	max-width: 576px;
+}
+
+.tier {
+	min-height: 15vw;
+}
+
+@media (min-width: 641px) {
+	.tier {
+		min-height: 96px;
+	}
+}
+
+@media (min-width: 900px) {
+	.tier {
+		width: 576px;
+		max-width: 576px;
+	}
+	.tierHolder { width: 576px; }
+	table{ min-width: 0px; }
+}
+
+#settings {
+	width: 10vw;
+	height: 10vw;
+	background-size: 7.5vw;
+}
+
+@media (min-width: 641px) {
+	#settings {
+		width: 64px;
+		height: 64px;
+		background-size: auto;
+	}
+}
+
+#moveButtons {
+	width: 10vw;
+	height: 10vw;
+	max-width: 64px;
+	max-height: 64px;
+}
+div#moveUp {
+	width: 10vw;
+	height: 5vw;
+	max-width: 64px;
+	max-height: 32px;
+}
+div#moveDown {
+	width: 10vw;
+	height: 5vw;
+	max-width: 64px;
+	max-height: 32px;
+}
+
+img {
+	height: 96px;
+}
+
+.character {
+	height: 15vw;
+	width: 15vw;
+}
+
+@media only screen and (min-width: 641px) {
+	.character {
+		height: 96px;
+		width: 96px;
+	}
+}
+
+.selectAllWrap {
+	width: 50%;
+	padding-left: 0%;
+	padding-right: 0%;
+	padding-bottom: 0px;
+	display:inline-block;
+}
+
+@media only screen and (min-width: 900px) {
+	.selectAllWrap {
+		width: 36%;
+		padding-left: 4%;
+		padding-right: 4%;
+		padding-bottom: 1px;
+	}
+}
