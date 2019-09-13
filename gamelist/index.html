@@ -122,8 +122,6 @@
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
-	<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>!-->
-	<!--<script src="allnames.js"></script>-->
 	<script src="../dragula.min.js"></script>
 	<script src="../html2canvas.min.js"></script>
 	<script src="../common.js"></script>
@@ -406,13 +404,7 @@
 			$("tr").each( function() {
 				$(this).remove();
 			});
-			console.log(processedCode);
-			/*
-			// deprecated switch statement
-			switch(processedCode[0][0]) {
-				case "fe": changeGame(gameFe);break;
-			}
-			*/
+			console.log(processedCode)
 			changeGame(gameAll);
 			// select only the games that appear
 			$(".selectAll").prop('checked', false).change();
