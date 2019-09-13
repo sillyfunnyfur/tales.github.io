@@ -1,0 +1,25 @@
+#tablemain {
+    background-image: url('quadrant.png');
+    width: 80vw;
+    height: 60vw;
+}
+
+#leftHolder {
+    left: 20vw;
+    top: 40vw;
+}
+
+#topHolder {
+    left: 50vw;
+    top: 10vw;
+}
+
+#rightHolder {
+    left: 80vw;
+    top: 40vw;
+}
+
+#bottomHolder {
+    left: 50vw;
+    top: 60vw;
+}
