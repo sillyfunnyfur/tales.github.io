@@ -2,11 +2,11 @@
 <html>
 <head>
 	<link rel="icon" type="image/x-icon" href= "../icon.png"/>
-	<title>Fire Emblem Quadrant Chart Maker</title>
+	<title>Fire Emblem Graph Maker</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
 	<link href="../newstyle.css" rel="stylesheet">
 	<link href="../toolstyle.css" rel="stylesheet">
-	<link href="quadrant.css" rel="stylesheet">
+	<link href="graph.css" rel="stylesheet">
 	<meta charset="UTF-8">
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div id="controls">
-		<h1 style="padding-left: 8px;"><span>neat</span> QUADRANT MAKER</h1>
+		<h1 style="padding-left: 8px;"><span>neat</span> GRAPH MAKER</h1>
 		<div id="buttons">
 			<button id="characters">Change characters</button>
 			<button id="screenshot">Screenshot</button>
@@ -47,7 +47,9 @@
 			<div class='handle'></div>
 			<span class='label' contenteditable='true'>Bottom</span>
 		</div>
-		<div id="tablemain"></div>
+		<div id="tablemain">
+			<img src='divider.png' id='divider'></div>
+		</div>
 	</div>
 	
 	<div id="char" class="sort">
@@ -66,8 +68,14 @@
 						<span id='currSize'>100%</span>
 					</div>
 				</div>
+				<div class='dividerWrap' style='text-align: center;'>
+					Show divider:
+					<input type='checkbox' id='toggleDivider' style='float: none;'>
+				</div>
 				<p>Choose background color:</p>
-				<div id="colorselect"><span style="background:#FF7F7F"></span><span style="background:#FFBF7F"></span><span style="background:#FFDF7F"></span><span style="background:#FFFF7F"></span><span style="background:#BFFF7F"></span><span style="background:#7FFF7F"></span><span style="background:#7FFFFF"></span><span style="background:#7FBFFF"></span><span style="background:#7F7FFF"></span><span style="background:#FF7FFF"></span><span style="background:#BF7FBF"></span><span style="background:#1A1A1A"></span><span style="background:#858585"></span><span style="background:#CFCFCF"></span><span style="background:#FFFFFF"></span></div>
+				<div id="colorselect">
+					<span style="background:#FF7F7F"></span><span style="background:#FFBF7F"></span><span style="background:#FFDF7F"></span><span style="background:#FFFF7F"></span><span style="background:#BFFF7F"></span><span style="background:#7FFF7F"></span><span style="background:#7FFFFF"></span><span style="background:#7FBFFF"></span><span style="background:#7F7FFF"></span><span style="background:#FF7FFF"></span><span style="background:#BF7FBF"></span><span style="background:#1A1A1A"></span><span style="background:#858585"></span><span style="background:#CFCFCF"></span><span style="background:#FFFFFF"></span>
+				</div>
 			</div>
 			<div id="charChange" class="popupMenu">
 				<h1>CHANGE CHARACTERS</h1>
@@ -82,7 +90,7 @@
 				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
 				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
 				<p>You can click and drag characters into the diagram. Dragging from the left of a label will allow you to move it.</p>
-				<p>You can <strong>change the size and colour</strong> of the diagram in the Options menu.</p>
+				<p>You can <strong>change the size, colour, and look of the diagram</strong> in the Options menu.</p>
 				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
 				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/e5e_ebooks">Twitter</a> or elsewhere.</p>
 			</div>
@@ -107,11 +115,6 @@
 			}
 			$("#colorselect span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
 			openPopup("#modal");
-		});
-		
-		$(document).on("dragStart", '.character', function() { // attach to diagram
-			// $(this).detach().appendTo('#tablewrap');
-			// $(this).css("position", "absolute");
 		});
 			
 		$(document).on("click", function(e) {
@@ -147,10 +150,21 @@
 			} 
 		});
 
+		$(document).on("change", "#toggleDivider", function() {
+			if ($(this).is(":checked")) {
+				$("#divider").css("visibility", "visible");
+			}
+			else {
+				$("#divider").css("visibility", "hidden");
+			}
+		});
+
 		$(document).on("input", "#sizeSlider", function() {
 			$("#currSize").html($(this).val() + "%");
 			$("#tablemain").css("width", ($(this).val() / 100) * 80 + "vw");
 			$("#tablemain").css("height", ($(this).val() / 100) * 60 + "vw");
+			$("#divider").css("width", ($(this).val() / 100) * 80 + "vw");
+			$("#divider").css("height", ($(this).val() / 100) * 60 + "vw");
 		});
 		
 		$(document).ready( function() {
