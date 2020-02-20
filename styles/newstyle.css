@@ -50,6 +50,13 @@ h1 {
 	font-weight: 100;
 	text-align: left;
 	text-transform: uppercase;
+	font-size: 24px;
+}
+
+@media only screen and (min-width: 600px) {
+	h1 {
+		font-size: 32px;
+	}
 }
 
 input {
@@ -254,15 +261,21 @@ div#moveDown {
 
 #char {
 	width: 90%;
+	max-height: 11vw;
+	overflow-x: scroll;
 	margin: 10px auto;
 	line-height: 0px;
 	padding-bottom: 32px;
 	height: auto;
+	white-space: nowrap;
 }
 
 @media only screen and (min-width: 641px) {
 	#char {
 		max-width: 1024px;
+		max-height: inherit;
+		overflow-x: auto;
+		white-space: normal;
 	}
 }
 
