@@ -4,6 +4,13 @@ html,body{
 	padding: 0;
 	margin: 0;
 	width:100%;
+	max-height: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+	html,body {
+		max-height: auto;
+	}
 }
 
 body {
@@ -25,7 +32,7 @@ textarea{
 	min-height: 100px;
 	margin: 0 auto;
 	line-height: 8px;
-	padding-bottom: 18px;
+	padding-bottom: 8px;
 	text-align: left;
 	vertical-align: middle;
 }
@@ -45,11 +52,28 @@ textarea{
 	}
 }
 
+#dock {
+	display: none;
+}
+
+@media only screen and (min-width: 600px) {
+	#dock {
+		display: inline;
+	}
+}
+
 h1 {
 	font-style: italic;
 	font-weight: 100;
 	text-align: left;
 	text-transform: uppercase;
+	font-size: 24px;
+}
+
+@media only screen and (min-width: 600px) {
+	h1 {
+		font-size: 32px;
+	}
 }
 
 input {
@@ -254,15 +278,22 @@ div#moveDown {
 
 #char {
 	width: 90%;
+	max-height: 10vw;
+	overflow-x: scroll;
 	margin: 10px auto;
 	line-height: 0px;
-	padding-bottom: 32px;
 	height: auto;
+	white-space: nowrap;
+	padding-bottom: 5vw;
 }
 
 @media only screen and (min-width: 641px) {
 	#char {
 		max-width: 1024px;
+		max-height: inherit;
+		overflow-x: auto;
+		white-space: normal;
+		padding-bottom: 32px;
 	}
 }
 
