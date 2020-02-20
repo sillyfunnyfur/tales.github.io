@@ -268,13 +268,13 @@ div#moveDown {
 
 #char {
 	width: 90%;
-	max-height: 11vw;
+	max-height: 10vw;
 	overflow-x: scroll;
 	margin: 10px auto;
 	line-height: 0px;
-	padding-bottom: 32px;
 	height: auto;
 	white-space: nowrap;
+	padding-bottom: 1vw;
 }
 
 @media only screen and (min-width: 641px) {
@@ -283,6 +283,7 @@ div#moveDown {
 		max-height: inherit;
 		overflow-x: auto;
 		white-space: normal;
+		padding-bottom: 32px;
 	}
 }
 
