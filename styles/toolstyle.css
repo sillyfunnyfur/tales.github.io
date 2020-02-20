@@ -49,3 +49,8 @@
     text-align: center;
     background-color: #CFCFCF; /* crimson flower */
 }
+
+#char {
+	overflow-x: visible;
+	white-space: normal;
+}
