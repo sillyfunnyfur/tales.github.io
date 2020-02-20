@@ -52,6 +52,16 @@ textarea{
 	}
 }
 
+#dock {
+	display: none;
+}
+
+@media only screen and (min-width: 600px) {
+	#dock {
+		display: inline;
+	}
+}
+
 h1 {
 	font-style: italic;
 	font-weight: 100;
