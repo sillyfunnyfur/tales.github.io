@@ -216,7 +216,7 @@
 					// $("#char div:last-child").attr("title", allCharacters[gameIndex][k]);
 				}
 			} else {
-				$(".character[id^="+currentGameChars[gameIndex][0]+"]").each( function() {
+				$(".character[id^='"+currentGameChars[gameIndex][0]+"-']").each( function() {
 					$(this).remove();
 				});
 			}
