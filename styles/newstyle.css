@@ -148,12 +148,23 @@ tr {
 .labelHolder {
 	min-width: 8vw;
 	height: 10vw;
+	text-align: center;
+	font-weight: 600;
+	font-size: 3.3vw;
+	line-height: 16px;
+	overflow-wrap: break-word;
 	transition: background .3s;
+}
+
+@media (min-width: 481px) {
+	.labelHolder {
+		font-size: 16px;
+	}
 }
 
 @media (min-width: 641px) {
 	.labelHolder {
-		min-width: 48px;
+		min-width: 64px;
 		height: 64px;
 	}
 }
