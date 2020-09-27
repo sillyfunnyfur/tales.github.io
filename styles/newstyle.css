@@ -18,12 +18,17 @@ body {
 	text-align: center;
 }
 
-textarea{
+textarea {
     height: 100%;
     width: 100%;
    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+#titleHeading {
+	padding-left: 3.5em;
+	padding-top: 0.5em;
 }
 
 #controls {
@@ -338,7 +343,7 @@ img {
     width:100%;
     height:100% !important;
     text-align:center;
-    z-index: 1000;
+    z-index: 1500;
 	background-color:rgba(0,0,0,.5);
 	transition: opacity .3s;
 }
