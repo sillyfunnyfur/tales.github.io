@@ -6,6 +6,7 @@
 	<title>Fire Emblem Tier List Maker</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
 	<link href="styles/newstyle.css" rel="stylesheet">
+	<link href="styles/nav.css" rel="stylesheet">
 	<link href="styles/dragula.min.css" rel="stylesheet">
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
@@ -18,8 +19,28 @@
 	<meta name="viewport" content="user-scalable=no">
 </head>
 <body>
+	<nav id="nav" class="nav">
+		<ul>
+			<li><button id="dock">Dock tier list</button></li>
+			<hr>
+			<li><button id="hidebuttons">Hide controls</button></li>
+			<hr>
+			<li><button id="characters">Change characters</button></li>
+			<hr>
+			<li><button id="help">Help</button></li>
+			<hr>
+			<li><button id="save">Save/Load</button></li>
+			<hr>
+			<li><button id="reset">Reset</button></li>
+		</ul>
+	</nav>
+
 	<div id="controls">
-		<h1 style="padding-left: 8px;"><span>neat</span> TIER LIST MAKER</h1>
+		<div class="nav-toggle">
+			<div class="nav-toggle-bar"></div>
+		</div>	
+		<h1 id="titleHeading"><span>neat</span> TIER LIST MAKER</h1>
+		<!--
 		<div id="buttons">
 			<button id="dock">Dock tier list</button>
 			<button id="hidebuttons">Hide controls</button>
@@ -28,6 +49,7 @@
 			<button id="save">Save/Load</button>
 			<button id="reset">Reset</button>
 		</div>
+		-->
 	</div>
 	
 	<div id="tablewrap"><table id="tablemain"><tbody>
