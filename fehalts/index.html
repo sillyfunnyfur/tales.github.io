@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<link rel="icon" type="image/x-icon" href= "../img/icon.png"/>
+	<title>Fire Emblem Heroes Alt Generator</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
+	<link href="../styles/newstyle.css" rel="stylesheet">
+	<link href="fehalts.css" rel="stylesheet">
+	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@e5e_dk" />
+	<meta property='og:image' content='https://fe-tier-list-maker.github.io/img/preview_image.png'/>
+	<meta property='og:url' content='https://fe-tier-list-maker.github.io/'/>
+	<meta property='og:title' content='FE Tier List Maker'/>
+	<meta property='og:description' content='Everyone is here!' />
+	<meta name="keywords" content="Fire Emblem,Tier List,Three Houses,FE,Awakening,Fates,All Characters">
+	<meta name="viewport" content="user-scalable=no">
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+	<script src="../lib/allnames.js"></script>
+	<script src="fehroll.js"></script>
+	<script src="seasons.js"></script>
+	<script src="sentences.js"></script>
+
+
+	<div class="main">
+	<h1>Fire Emblem Heroes Alt Generator</h1>
+	<br></br>
+	<p id="result">"Sample Text"</p>
+	<br>
+	<p style="text-align: center;">
+		<button id="generate">Make a new one!</button>
+		<span style="display:inline-block; width: 2em;"></span>
+		<button id="characters">Change characters</button>
+	</p>
+	</div>
+	<div id="overlay">
+		<div id="modalWrapper">
+			<div id="charChange" class="popupMenu">
+				<h1>CHANGE CHARACTERS</h1>
+				<span id="close"></span>
+				<div id="checklist"><div></div></div>
+				<p>Make sure to select at least one group for the generator to function properly.</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
