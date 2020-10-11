@@ -2,6 +2,9 @@ var seasonPlaceholder = "[season]";
 var characterPlaceholder = "[character]";
 var sentences = [
     seasonPlaceholder + " " + characterPlaceholder + "!?",
+    "Did they just announce " + seasonPlaceholder + " " + characterPlaceholder + "?",
+    "Intern-kun leaked " + seasonPlaceholder + " " + characterPlaceholder,
+    "My uncle at Intsys says they can't add " + seasonPlaceholder + " " + characterPlaceholder,
     "I would whale for " + seasonPlaceholder + " " + characterPlaceholder,
     "I hope I roll " + seasonPlaceholder + " " + characterPlaceholder,
     "Unpopular opinion: We need " + seasonPlaceholder + " " + characterPlaceholder,

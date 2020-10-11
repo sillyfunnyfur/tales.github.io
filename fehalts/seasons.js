@@ -49,4 +49,6 @@ var seasons = [
     "Pride Month",
     "Super Bowl",
     "Heroic Spirit",
+    "Chef",
+    "Idol",
 ]
