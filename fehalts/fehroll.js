@@ -109,6 +109,8 @@ function changeGame() {
     $("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
     
     $( ".selectAll" ).prop('checked', true).change();
+    var otherBox = "#" + String(allGames.length - 1);
+    $(otherBox).prop('checked', false).change();
 }
 
 $(document).ready( function() {
