@@ -172,7 +172,7 @@
 					  [$("tr:nth-of-type(7)"), 9] ];
 		var tier = []; // format: [element, color id]
 		var tierlist = [];
-		var currentTier; // i mean come on!
+		var currentTier;
 		var tempTier;
 		var tierIndex;
 		var currentColor;
@@ -368,6 +368,9 @@
 				
 				$("#checklist div:last-child").after(singleCheckWrap);
 				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+game[i][0]+"' >");
+			}
+			if ((game.length - 1) % 2 != 0) {
+				$("#checklist div:last-child").after(singleCheckWrap);
 			}
 			$("#checklist div:last-child").after(selectAllWrap);
 			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
