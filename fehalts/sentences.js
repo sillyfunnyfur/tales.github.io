@@ -18,4 +18,5 @@ var sentences = [
     characterPlaceholder + " is perfect for the " + seasonPlaceholder + " banner",
     "I'm saving for " + characterPlaceholder + "'s " + seasonPlaceholder + " alt",
     "I'm only playing this game until they add " + seasonPlaceholder + " " + characterPlaceholder,
+    "Do you think " + characterPlaceholder + " could be on the " + seasonPlaceholder + " banner?",
 ];
