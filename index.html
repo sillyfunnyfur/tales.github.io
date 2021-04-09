@@ -27,6 +27,8 @@
 			<hr>
 			<li><button id="characters">Change characters</button></li>
 			<hr>
+			<li><button id="filter">Filter</button></li>
+			<hr>
 			<li><button id="help">Help</button></li>
 			<hr>
 			<li><button id="save">Save/Load</button></li>
@@ -140,6 +142,12 @@
 				<p style="text-align: left;">Note that any game that does not appear in the loaded list will be deselected.</p>
 				<textarea id="exportcode" rows="8"></textarea><div><button id="runCode">Run code</button></div>
 			</div>
+			<div id="filterMenu" class="popupMenu">
+				<h1>FILTER</h1>
+				<span id="close"></span>
+				<div id="filterChecklist"><div></div></div>
+				<p>Choosing any filter will <strong>hide all unselected characters</strong> that don't match the chosen filters. Display every character again by unchecking every filter.</p>
+			</div>
 		</div>
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -243,6 +251,11 @@
 					$(this).remove();
 				});
 			}
+			updateFilters(imgTags);
+		});
+
+		$(document).on("change", ".filterCheck", function() {
+			updateFilters(imgTags);
 		});
 		
 		$(document).on("dblclick", ".character", function() { // move to highest tier instantly
@@ -356,6 +369,9 @@
 			// just in case there's more than one...
 			$(".selectAllWrap").each( function() {
 				$(this).remove();
+			});
+			$(".filterCheck").each( function() {
+				$(this).prop('checked', false).change();
 			});
 			
 			for (var i = 1; i < game.length; i++) {
@@ -493,6 +509,7 @@
 				loadCode(localStorage.getItem("ColorTiersCode"));
 			}
 			updateTiers();
+			loadFilterList(allTags);
 			tierlistSize();
 		});
 		$(window).resize( function () {
