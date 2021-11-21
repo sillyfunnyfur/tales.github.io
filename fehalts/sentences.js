@@ -1,5 +1,6 @@
 var seasonPlaceholder = "[season]";
 var characterPlaceholder = "[character]";
+var duoPlaceholder = "[character2]";
 var sentences = [
     seasonPlaceholder + " " + characterPlaceholder + "!?",
     "Did they just announce " + seasonPlaceholder + " " + characterPlaceholder + "?",
@@ -19,4 +20,11 @@ var sentences = [
     "I'm saving for " + characterPlaceholder + "'s " + seasonPlaceholder + " alt",
     "I'm only playing this game until they add " + seasonPlaceholder + " " + characterPlaceholder,
     "Do you think " + characterPlaceholder + " could be on the " + seasonPlaceholder + " banner?",
+];
+var duoSentences = [
+    "I'm hoping for a " + characterPlaceholder + " and " + duoPlaceholder + " on the " + seasonPlaceholder + " banner",
+    seasonPlaceholder + " " + characterPlaceholder + " and " + duoPlaceholder + "!?",
+    "When will they add " + seasonPlaceholder + " " + characterPlaceholder + " and " + duoPlaceholder + "?",
+    "I need " + seasonPlaceholder + " " + characterPlaceholder + " and " + duoPlaceholder + " so I can score higher",
+    "I'm collecting every " + characterPlaceholder + " and " + duoPlaceholder + ", so I really need their " + seasonPlaceholder + " duo",
 ];

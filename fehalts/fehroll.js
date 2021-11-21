@@ -2,6 +2,8 @@ var singleChar = "<div class='character'></div>";
 var singleCheckWrap = "<div class='characterCheckWrap'></div>";
 var selectAllWrap = "<div class='selectAllWrap'></div>";
 var checked = []
+var singles = true;
+var duos = true;
 
 function randint(maxInt) {
     return Math.floor(Math.random() * maxInt);
@@ -23,19 +25,41 @@ function roll() {
     var gameId = allGamesIds[game];
     var numCharacters = allCharacters[gameId].length;
     var character = allCharacters[gameId][randint(numCharacters)];
-    var newSentence = sentences[randint(sentences.length)];
+    var allSentences = [];
+    if (singles) {
+        allSentences = allSentences.concat(sentences);
+    }
+    if (duos) {
+        allSentences = allSentences.concat(duoSentences);
+    }
+    var newSentence = allSentences[randint(allSentences.length)];
     var season = seasons[randint(seasons.length)];
     newSentence = newSentence.replace(characterPlaceholder, character);
     newSentence = newSentence.replace(seasonPlaceholder, season);
+    if (duos) {
+        var secondCharacter;
+        do {
+            secondCharacter = allCharacters[gameId][randint(numCharacters)];
+        } while (secondCharacter == character)
+        newSentence = newSentence.replace(duoPlaceholder, secondCharacter);
+    }
     $("#result").html("\"" + newSentence + "\"");
 }
+
+$(document).on("change", "#single", function() {
+    singles = $(this).is(":checked");
+});
+
+$(document).on("change", "#duo", function() {
+    duos = $(this).is(":checked");
+});
 
 $(document).on("click", "#generate", function() {
     roll();
 });
 
-$(document).on("click", "#characters", function() { // open game changer modal
-    openPopup("#charChange");
+$(document).on("click", "#settingsButton", function() { // open settings modal
+    openPopup("#changeSettings");
 });
 
 $(document).on("change", ".characterCheck", function() { // add/remove characters
@@ -70,6 +94,7 @@ function openPopup(popup) {
 function closePopups() {
     $("#modal").css("display", "none");
     $("#charChange").css("display", "none");
+    $("#changeSettings").css("display", "none");
     $("#helpMenu").css("display", "none");
     $("#screenshotShow canvas").remove();
 }
@@ -109,6 +134,8 @@ function changeGame() {
     $("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
     
     $( ".selectAll" ).prop('checked', true).change();
+    $( "#single" ).prop('checked', true).change();
+    $( "#duo" ).prop('checked', true).change();
     var otherBox = "#" + String(allGames.length - 1);
     $(otherBox).prop('checked', false).change();
 }

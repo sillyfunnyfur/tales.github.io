@@ -40,6 +40,8 @@
 		<button id="generate">Make a new one!</button>
 		<span style="display:inline-block; width: 2em;"></span>
 		<button id="characters">Change characters</button>
+		<span style="display:inline-block; width: 2em;"></span>
+		<button id="settingsButton">Change settings</button>
 	</p>
 	</div>
 	<div id="overlay">
@@ -49,6 +51,15 @@
 				<span id="close"></span>
 				<div id="checklist"><div></div></div>
 				<p>Make sure to select at least one group for the generator to function properly.</p>
+			</div>
+
+			<div id="changeSettings" class="popupMenu">
+				<h1>SETTINGS</h1>
+				<span id="close"></span>
+				<div id="options"><div>
+					<div class="filterCheckWrap">Enable single characters: <input type="checkbox" id="single" class="filterCheck"></div>
+					<div class="filterCheckWrap">Enable duos: <input type="checkbox" id="duo" class="filterCheck"></div>
+				</div>
 			</div>
 			
 			<div id="helpMenu" class="popupMenu">
