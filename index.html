@@ -10,7 +10,7 @@
 	<link href="styles/dragula.min.css" rel="stylesheet">
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content="@e5e_dk" />
+	<meta name="twitter:creator" content="@vernie_dk" />
 	<meta property='og:image' content='https://fe-tier-list-maker.github.io/img/preview_image.png'/>
 	<meta property='og:url' content='https://fe-tier-list-maker.github.io/'/>
 	<meta property='og:title' content='FE Tier List Maker'/>
@@ -92,6 +92,10 @@
 		</tr>
 	</tbody></table>
 	</div>
+
+	<div id="tooltip">
+		<p>PRO TIP: Click the top left button to show more characters!</p>
+	</div>
 	
 	<div id="char" class="sort">
 		<div>If no characters are loaded here, choose a game by clicking the "Change game" button above.</div>
@@ -120,7 +124,7 @@
 				<h1>HELP</h1>
 				<span id="close"></span>
 				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a>, including a game tier list maker and graph maker!</p>
-				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/e5e_dk">Twitter</a> or elsewhere.</p>
+				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/vernie_dk">Twitter</a> or elsewhere.</p>
 				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
 				<p>Clicking on the "Dock tier list" button will <strong>stick the tier list to the top of the window.</strong>
 				This can be useful if you have a large number of characters on-screen and don't want to scroll up and down
@@ -169,6 +173,7 @@
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
 		
 		var screenshotMode = false;
+		var showTooltip = true;
 		var listStickied = false;
 		var colors = ["#FF7F7F","#FFBF7F","#FFDF7F","#FFFF7F","#BFFF7F","#7FFF7F","#7FFFFF","#7FBFFF","#7F7FFF","#FF7FFF","#BF7FBF","#3B3B3A","#858585","#CFCFCF","#F7F7F7"];
 		// first is the row in the table of the tier, second is the index of its color
@@ -190,6 +195,13 @@
 		for (var i = 0; i < tierDefaults.length; i++) {
 			tierDefaults[i][0].find(".labelHolder").css("background",colors[tierDefaults[i][1]]);
 		}
+
+		$(document).on("click", ".nav-toggle", function() {
+			if (showTooltip) {
+				$("#tooltip").css("display", "none");
+				showTooltip = false;
+			}
+		});
 		
 		$(document).on("click", "#dock", function() {
 			if (listStickied) {
