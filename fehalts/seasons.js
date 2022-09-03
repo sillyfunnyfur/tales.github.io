@@ -53,4 +53,5 @@ var seasons = [
     "Heroic Spirit",
     "Trucker",
     "Plegian",
+    "Phantom Thief",
 ]
