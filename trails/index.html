@@ -1,0 +1,402 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8"> 
+	<link rel="icon" type="image/x-icon" href= "icon.png"/>
+	<title>Trails/Kiseki Tier List Maker</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic" rel="stylesheet" type="text/css">
+	<link href="../styles/newstyle.css" rel="stylesheet">
+	<link href="../styles/nav.css" rel="stylesheet">
+    <link href="../styles/dragula.min.css" rel="stylesheet">
+	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@vernie_dk" />
+	<meta property='og:image' content='https://fe-tier-list-maker.github.io/img/preview_image.png'/>
+	<meta property='og:url' content='https://fe-tier-list-maker.github.io/'/>
+	<meta property='og:title' content='Trails Tier List Maker'/>
+	<meta property='og:description' content='Everyone is here!' />
+	<meta name="keywords" content="Trails,Kiseki,Tier List,Cold Steel,Crossbell,Sky,All Characters">
+	<meta name="viewport" content="user-scalable=no">
+</head>
+<body>
+	<nav id="nav" class="nav">
+		<ul>
+			<li><button id="dock">Dock tier list</button></li>
+			<hr>
+			<li><button id="hidebuttons">Hide controls</button></li>
+			<hr>
+			<li><button id="characters">Change characters</button></li>
+			<hr>
+			<li><button id="help">Help</button></li>
+			<hr>
+			<li><button id="save">Save/Load</button></li>
+			<hr>
+			<li><button id="reset">Reset</button></li>
+		</ul>
+	</nav>
+	<div id="controls">
+		<div class="nav-toggle">
+			<div class="nav-toggle-bar"></div>
+		</div>	
+		<h1 id="titleHeading"><span>neat</span> TIER LIST MAKER</h1>
+	</div>
+	
+	<div id="tablewrap"><table id="tablemain"><tbody>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">S</span></td>
+			<td><div class="tier sort" id="rows"></div></td>
+			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">A</span></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">B</span></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">C</span></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">D</span></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">E</span></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+		<tr>
+			<td class="labelHolder" contenteditable="true"><span class="label">F</span></td>
+			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
+			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+		</tr>
+	</tbody></table>
+	</div>
+
+	<div id="tooltip">
+		<p>PRO TIP: Click the top left button to show more characters!</p>
+	</div>
+	
+	<div id="char" class="sort">
+		<div>If no characters are loaded here, choose a game by clicking the "Change game" button above.</div>
+	</div>
+	
+	<div id="overlay">
+		<div id="modalWrapper">
+			<div id="modal" class="popupMenu">
+				<h1>SETTINGS</h1>
+				<span id="close"></span>
+				<p>Choose label color:</p>
+				<div id="colorselect"><span style="background:#FF7F7F"></span><span style="background:#FFBF7F"></span><span style="background:#FFDF7F"></span><span style="background:#FFFF7F"></span><span style="background:#BFFF7F"></span><span style="background:#7FFF7F"></span><span style="background:#7FFFFF"></span><span style="background:#7FBFFF"></span><span style="background:#7F7FFF"></span><span style="background:#FF7FFF"></span><span style="background:#BF7FBF"></span><span style="background:#3B3B3B"></span><span style="background:#858585"></span><span style="background:#CFCFCF"></span><span style="background:#F7F7F7"></span></div>
+				<p>Label name:</p><textarea id="labelName"></textarea></p>
+				<button id="resetLabel">Reset label</button>
+				<p>Row functions:</p>
+				<p><button id="deleteRow">Delete row</button> <button id="clearRow">Clear row</button></p>
+				<p><button id="addRowUp">Add row above</button> <button id="addRowBelow">Add row below</button></p>
+			</div>
+			<div id="charChange" class="popupMenu">
+				<h1>CHANGE CHARACTERS</h1>
+				<span id="close"></span>
+				<div id="checklist"><div></div></div>
+				<p><strong>By clicking any game on this list, you risk being spoiled on every game up to and including it.</strong></p>
+				<p><strong>Hiding a game will remove every character from that game from your tierlist!</strong> Do not click unless you are sure you want to change! You cannot undo this.</p>
+			</div>
+			<div id="helpMenu" class="popupMenu">
+				<h1>HELP</h1>
+				<span id="close"></span>
+				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a>, including a Venn Diagram maker!</p>
+				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
+				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
+				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
+				<p>Clicking on the "Dock tier list" button will <strong>stick the tier list to the top of the window.</strong>
+				This can be useful if you have a large number of characters on-screen and don't want to scroll up and down
+				as you drag them into your list. Clicking the button again will return the list to its original position.</p>
+				<p>You can take a screenshot or generate code to load your current list later in the "Save/Load" tab.</p>
+				<p>There is a gear next to each tier in the tierlist. If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
+				<p>Next to the gear are two arrows which will let you <strong>move a tier up and down a level</strong>.</p>
+				<p><strong>You can change the name of the tier</strong> by clicking on the tier label and typing in there. If this doesn't work, you can change or reset it in the tier's settings menu (the gear).</p>
+				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
+				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/vernie_dk">Twitter</a> or elsewhere.</p>
+			</div>
+			<div id="screenshotShow" class="popupMenu">
+				<h1>SAVE/LOAD</h1>
+				<span id="close"></span>
+				<p style="text-align: left;">Your image will appear above after pressing "Take screenshot". You can copy or save this image.</p>
+				<div><button id="screenshot">Take screenshot</button></div>
+				<p style="text-align: left;">Alternatively, copy the code below to share an editable version of your tierlist. Paste a code into the box below and click "Run code" to load another tier list.</p>
+				<p style="text-align: left;">Note that any game that does not appear in the loaded list will be deselected.</p>
+				<textarea id="exportcode" rows="8"></textarea><div><button id="runCode">Run code</button></div>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+	<script src="../lib/dragula.min.js"></script>
+	<script src="../lib/html2canvas.min.js"></script>
+	<script src="../lib/common.js"></script>
+	<script>
+		dragula({
+			isContainer: function (el) {
+				return el.classList.contains('sort');
+			}
+		}).on("drop", function() {
+			localStorage.setItem("TierListMakerCode",toCode());
+		});
+		
+		var gameAll = [	["trails", 0, ""],
+                ["sky1", 8, "Trails in the Sky FC"],
+				["sky2", 0, "Trails in the Sky SC"],
+				["sky3", 0, "Trails in the Sky 3rd"],
+				["zero", 0, "Trails from Zero"],
+                ["azure", 0, "Trails to Azure"],
+                ];
+
+		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
+		
+		var colors = ["#FF7F7F","#FFBF7F","#FFDF7F","#FFFF7F","#BFFF7F","#7FFF7F","#7FFFFF","#7FBFFF","#7F7FFF","#FF7FFF","#BF7FBF","#3B3B3A","#858585","#CFCFCF","#F7F7F7"];
+		// first is the row in the table of the tier, second is the index of its color
+		var tierDefaults = [ [$("tr:nth-of-type(1)"), 0],
+					  [$("tr:nth-of-type(2)"), 1],
+					  [$("tr:nth-of-type(3)"), 3],
+					  [$("tr:nth-of-type(4)"), 5],
+					  [$("tr:nth-of-type(5)"), 7],
+					  [$("tr:nth-of-type(6)"), 8],
+					  [$("tr:nth-of-type(7)"), 9] ];
+		var tier = []; // format: [element, color id]
+		var tierlist = [];
+		var currentTier;
+		var tempTier;
+		var tierIndex;
+		var currentColor;
+		var colorIndex;
+		var showTooltip = true;
+					  
+		for (var i = 0; i < tierDefaults.length; i++) {
+			tierDefaults[i][0].find(".labelHolder").css("background",colors[tierDefaults[i][1]]);
+		}
+
+		$(document).on("click", ".nav-toggle", function() {
+			if (showTooltip) {
+				$("#tooltip").css("display", "none");
+				showTooltip = false;
+			}
+		});
+		
+		$(document).on("click", "#dock", function() {
+			if (listStickied) {
+				$("#tablewrap").css("position","static");
+				$("#dock").text("Dock tier list");
+				listStickied = false;
+			} else {
+				$("#tablewrap").css("position","sticky");
+				$("#dock").text("Undock tier list");
+				listStickied = true;
+			}
+		});
+			
+		$(document).on("click", "#settings", function() { // open settings modal
+			currentTier = $(this).parent().parent();
+			currentColor = currentTier.find(".labelHolder").css("background-color");
+			$("textarea").val(currentTier.find(".labelHolder").text());
+			colorIndex = colors.indexOf(rgb2hex(currentColor).toUpperCase());
+			tier = [currentTier, colorIndex];
+			console.log(tier);
+			for (var i = 0; i < $("#modal span").length; i++) {
+				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
+			}
+			$("#modal span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
+			openPopup("#modal");
+		});
+		
+		$(document).on("click", "#colorselect span", function() { // change row label
+			for (var i = 0; i < $("#modal span").length; i++) {
+				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
+			}
+			$(this).attr("class","selected");
+			currentTier.find(".labelHolder").css("background-color",$(this).css("background-color"));
+			updateTiers();
+		});
+
+		$(document).on("click", "#save", function() { // open save/load modal
+			openPopup("#screenshotShow");
+			$("#screenshotShow").find("textarea").val(toCode());
+		});
+
+		$(document).on("change", ".characterCheck", function() { // add/remove characters
+			gameId = ($(this).attr("id"));
+			gameClass = ($(this).attr("class"));
+			// remove non-numeric characters - stackoverflow.com/questions/1862130/
+			gameIndex = gameClass.replace(/\D/g,'');
+			// alternative 
+			// gameInfo = currentGameChars.find(function(curr) { return curr[0] == gameId;});
+
+			if($(this).is(":checked")) {
+				for (var k = 0; k <= currentGameChars[gameIndex][1]; k++) {
+					$("#char div:last-child").after(singleChar);
+					$("#char div:last-child").css("background-image","url(../img/"+currentGame+"/"+gameId+"/"+k+".png)");
+					$("#char div:last-child").attr("id", gameId + "-" + k);
+					// $("#char div:last-child").attr("title", allCharacters[gameIndex][k]);
+				}
+			} else {
+				$(".character[id^='"+currentGameChars[gameIndex][0]+"-']").each( function() {
+					$(this).remove();
+				});
+			}
+		});
+		
+		$(document).on("dblclick", ".character", function() { // move to highest tier instantly
+			$(this).detach().appendTo('#rows');
+		});
+			
+		$(document).on("click", function(e) {
+			clicked = e.target.id;
+			if(clicked == "overlay" || clicked == "modalWrapper" || clicked == "close") { // close modals
+				closePopups();
+				$("#screenshotShow").css("display", "none");
+				$("#overlay").css("opacity", 0);
+				$("#overlay").css("visibility", "hidden");
+			} else if(clicked == "screenshot") { // take a screenshot
+				$("#exportcode").val(toCode()); // generate save/load code
+				closePopups();
+				$("#screenshotShow").css("display","block");
+				$("#overlay").css("opacity", 1);
+				$("#overlay").css("visibility", "visible");
+				if (!screenshotMode) {
+					$("#hidebuttons").click();
+				}
+				$("#tablemain").css("margin", "3px");
+				$("#tablemain").css("max-width", "100%");
+				window.scrollTo(0,0);
+				html2canvas(document.getElementById("tablemain")).then(function(canvas) {
+					$("#screenshotShow span").after(canvas);
+					$("#screenshotShow canvas").css("max-width", "100%");
+					$("#screenshotShow canvas").css("height", "auto");
+					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
+					$("#tablemain").removeAttr('style'); // clear css changes
+				});
+
+			} else if(clicked == "hidebuttons") { // hide the buttons
+				if (screenshotMode) {
+					$("td:last-of-type").css("display","table-cell");
+					$("#hidebuttons").text("Hide controls");
+					screenshotMode = false;
+				} else {
+					$("td:last-of-type").css("display","none");
+					$("#hidebuttons").text("Show controls");
+					screenshotMode = true;
+				}
+			} else if(clicked == "clearRow") { // put characters in this row back into the box
+				for(var i = 0; i < currentTier.find("#rows div").length; i++) {
+					$("#char div:last-child").after(currentTier.find("#rows div"));
+				}
+			} else if(clicked == "deleteRow") { // delete this row
+				for(var i = 0; i < currentTier.find("#rows div").length; i++) {
+					$("#char div:last-child").after(currentTier.find("#rows div"));
+				}
+				currentTier.remove();
+				updateTiers();
+				$("#overlay").css("opacity", 0);
+				$("#overlay").css("visibility", "hidden");
+				closePopups();
+			} else if (clicked == "addRowUp") { // add a row on top of the current row
+				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
+				updateTiers();
+			} else if (clicked == "addRowBelow") { // add a row below the current row
+				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").after(singleTier);
+				updateTiers();
+			} else if (clicked == "moveUp") { // move the row above the row above it
+				currentTier = $(e.target).closest("tr");
+				if (currentTier.prev("tr").length != 0)
+					currentTier.insertBefore(currentTier.prev("tr"));
+			} else if (clicked == "moveDown") { // move the row below the row below it
+				currentTier = $(e.target).closest("tr");
+				if (currentTier.next("tr").length != 0)
+					currentTier.insertAfter(currentTier.next("tr"));
+			} else if (clicked == "runCode") {
+				loadCode($("#exportcode").val(), gameAll);
+			} else if (clicked == "reset") {
+				changeGame(currentGameChars);
+			} 
+		});
+		
+		$("#labelName").bind("input propertychange", function() {
+			currentTier.find(".label").html($("#labelName").val().replace(/\n/g, "<br>"));
+		});
+		
+		$("#resetLabel").on("click", function() {
+			currentTier.find(".labelHolder").html('<span class="label">New Label</label>');
+		});
+		
+		function updateTiers() {
+			tierlist = [];
+			tempTier = currentTier;
+			for (var i = 0; i < $("tr").length; i++) {
+				currentTier = $("tr:nth-of-type("+(i+1)+")");
+				currentColor = currentTier.find(".labelHolder").css("background-color"); // returns in rgb format, have to convert to hex
+				tier[0] = currentTier;
+				tier[1] = colors.indexOf(rgb2hex(currentColor).toUpperCase());
+				// console.log(tier);
+				tierlist.push(tier);
+			}
+			currentTier = tempTier;
+			// console.log(tierlist);
+		}
+		
+		function changeGame(game) {
+			currentGameChars = [];
+			currentGameChars = game;
+			currentGame = game[0][0];
+			$(".character").each( function() {
+				$(this).remove();
+			});
+			$(".characterCheckWrap").each( function() {
+				$(this).remove();
+			});
+			// just in case there's more than one...
+			$(".selectAllWrap").each( function() {
+				$(this).remove();
+			});
+			
+			for (var i = 1; i < game.length; i++) {
+				/*
+				for (var k = 0; k <= game[i][1]; k++) {
+					$("#char div:last-child").after(singleChar);
+					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i][0]+"/"+k+".png)");
+					$("#char div:last-child").attr("id",i);
+				}
+				*/
+				
+				$("#checklist div:last-child").after(singleCheckWrap);
+				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+game[i][0]+"' >");
+			}
+			$("#checklist div:last-child").after(selectAllWrap);
+			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
+			
+			$( ".characterCheck.game1" ).prop('checked', true).change();
+
+			$("h1 span").text(currentGame);
+			updateTiers();
+		}
+		
+		$(document).ready( function() {
+			$("#char").html("<div></div>");
+			if (localStorage.getItem("ColorTiersCode") === null)
+				changeGame(gameAll);
+			else {
+				$("#exportcode").val(localStorage.getItem("ColorTiersCode"));
+				loadCode(localStorage.getItem("ColorTiersCode"), gameAll);
+			}
+			updateTiers();
+			tierlistSize();
+		});
+		$(window).resize( function () {
+			tierlistSize();
+		})
+	</script>
+</body>
