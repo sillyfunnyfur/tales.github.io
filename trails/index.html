@@ -105,13 +105,13 @@
 				<h1>CHANGE CHARACTERS</h1>
 				<span id="close"></span>
 				<div id="checklist"><div></div></div>
-				<p><strong>By clicking any game on this list, you risk being spoiled on every game up to and including it.</strong></p>
+				<p><strong>By clicking any game on this list and especially "Select All", you risk being spoiled on every game up to and including it.</strong> Characters are included in their first appearance for a given arc only, excepting alternate portraits (CS1-2 and CS3-4 are separated for this).</p>
 				<p><strong>Hiding a game will remove every character from that game from your tierlist!</strong> Do not click unless you are sure you want to change! You cannot undo this.</p>
 			</div>
 			<div id="helpMenu" class="popupMenu">
 				<h1>HELP</h1>
 				<span id="close"></span>
-				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a>, including a Venn Diagram maker!</p>
+				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a>, including a Fire Emblem tier list maker.</p>
 				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
 				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
 				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
@@ -149,12 +149,13 @@
 			localStorage.setItem("TierListMakerCode",toCode());
 		});
 		
+		// number is last numbered filename in the list for ease of organization
 		var gameAll = [	["trails", 0, ""],
-                ["sky1", 8, "Trails in the Sky FC"],
-				["sky2", 0, "Trails in the Sky SC"],
-				["sky3", 0, "Trails in the Sky 3rd"],
-				["zero", 0, "Trails from Zero"],
-                ["azure", 0, "Trails to Azure"],
+                ["sky1", 56, "Trails in the Sky FC"],
+				["sky2", 18, "Trails in the Sky SC"],
+				["sky3", 17, "Trails in the Sky 3rd"],
+				["zero", 40, "Trails from Zero"],
+                ["azure", 23, "Trails to Azure"],
                 ];
 
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
