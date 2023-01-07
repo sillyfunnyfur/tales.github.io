@@ -12,7 +12,7 @@
 	<meta name="google-site-verification" content="mhlxk9_OOcyed8If_JjdkOZv6GmGPYfSnbsafwWmRC4" />
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:creator" content="@vernie_dk" />
-	<meta property='og:image' content='https://fe-tier-list-maker.github.io/img/preview_image.png' />
+	<meta property='og:image' content='https://fe-tier-list-maker.github.io/trails/preview_image.png' />
 	<meta property='og:url' content='https://fe-tier-list-maker.github.io/' />
 	<meta property='og:title' content='Trails Tier List Maker' />
 	<meta property='og:description' content="That's love and peace, baby" />
@@ -243,7 +243,9 @@
 		});
 
 		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
-
+		
+		var screenshotMode = false;
+		var listStickied = false;
 		var colors = ["#FF7F7F", "#FFBF7F", "#FFDF7F", "#FFFF7F", "#BFFF7F", "#7FFF7F", "#7FFFFF", "#7FBFFF", "#7F7FFF", "#FF7FFF", "#BF7FBF", "#3B3B3A", "#858585", "#CFCFCF", "#F7F7F7"];
 		// first is the row in the table of the tier, second is the index of its color
 		var tierDefaults = [[$("tr:nth-of-type(1)"), 0],
