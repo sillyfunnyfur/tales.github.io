@@ -404,7 +404,7 @@
 				if (currentTier.next("tr").length != 0)
 					currentTier.insertAfter(currentTier.next("tr"));
 			} else if (clicked == "runCode") {
-				loadCode($("#exportcode").val(), gameAll);
+				loadCode($("#exportcode").val(), gameTrails);
 			} else if (clicked == "reset") {
 				changeGame(currentGameChars);
 			}
@@ -475,7 +475,7 @@
 				changeGame(gameTrails);
 			else {
 				$("#exportcode").val(localStorage.getItem("ColorTiersCode"));
-				loadCode(localStorage.getItem("ColorTiersCode"), gameAll);
+				loadCode(localStorage.getItem("ColorTiersCode"), gameTrails);
 			}
 			updateTiers();
 			tierlistSize();
