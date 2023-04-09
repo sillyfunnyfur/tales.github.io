@@ -4,6 +4,8 @@ var selectAllWrap = "<div class='selectAllWrap'></div>";
 var checked = []
 var singles = true;
 var duos = true;
+var baseSeasons = true;
+var otherSeasons = true;
 
 function randint(maxInt) {
     return Math.floor(Math.random() * maxInt);
@@ -26,14 +28,21 @@ function roll() {
     var numCharacters = allCharacters[gameId].length;
     var character = allCharacters[gameId][randint(numCharacters)];
     var allSentences = [];
+    var allSeasons = [];
     if (singles) {
         allSentences = allSentences.concat(sentences);
     }
     if (duos) {
         allSentences = allSentences.concat(duoSentences);
     }
+    if (baseSeasons) {
+        allSeasons = allSeasons.concat(baseSeasonsList);
+    }
+    if (otherSeasons) {
+        allSeasons = allSeasons.concat(otherSeasonsList);
+    }
     var newSentence = allSentences[randint(allSentences.length)];
-    var season = seasons[randint(seasons.length)];
+    var season = allSeasons[randint(allSeasons.length)];
     newSentence = newSentence.replace(characterPlaceholder, character);
     newSentence = newSentence.replace(seasonPlaceholder, season);
     if (duos) {
@@ -53,6 +62,15 @@ $(document).on("change", "#single", function() {
 $(document).on("change", "#duo", function() {
     duos = $(this).is(":checked");
 });
+
+$(document).on("change", "#baseSeasons", function() {
+    baseSeasons = $(this).is(":checked");
+});
+
+$(document).on("change", "#seasonsOfLove", function() {
+    otherSeasons = $(this).is(":checked");
+});
+
 
 $(document).on("click", "#generate", function() {
     roll();
@@ -133,9 +151,10 @@ function changeGame() {
     $("#checklist div:last-child").after(selectAllWrap);
     $("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
     
-    $( ".selectAll" ).prop('checked', true).change();
-    $( "#single" ).prop('checked', true).change();
-    $( "#duo" ).prop('checked', true).change();
+    $(".selectAll").prop('checked', true).change();
+    $(".filterCheck").each( function() {
+        $(this).prop('checked', true).change();
+    });
     var otherBox = "#" + String(allGames.length - 1);
     $(otherBox).prop('checked', false).change();
 }

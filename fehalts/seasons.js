@@ -1,12 +1,17 @@
-var seasons = [
+var baseSeasonsList = [
     "Legendary",
     "Mythic",
+    "Rearmed",
     "Ascendant",
     "New Year's",
+    "Plegian",
+    "Hatari",
+    "Khadein",
     "Hot Springs",
     "Valentine's",
     "Spring",
     "Easter",
+    "Child",
     "Picnic",
     "Wedding",
     "Fallen",
@@ -14,11 +19,15 @@ var seasons = [
     "Brave",
     "Talk Like a Pirate Day",
     "Ninja",
+    "Phantom Thief",
     "Ballroom",
     "Day of the Twelve",
     "Yukata",
     "Halloween",
     "Christmas",
+];
+
+var otherSeasonsList = [
     "Lunar New Year",
     "St. Patrick's Day",
     "White Day",
@@ -52,6 +61,6 @@ var seasons = [
     "Attorney",
     "Heroic Spirit",
     "Trucker",
-    "Plegian",
-    "Phantom Thief",
-]
+    "Grand",
+    "Bondforged",
+]; 
