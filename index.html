@@ -44,55 +44,11 @@
 			<div class="nav-toggle-bar"></div>
 		</div>	
 		<h1 id="titleHeading"><span>neat</span> TIER LIST MAKER</h1>
-		<!--
-		<div id="buttons">
-			<button id="dock">Dock tier list</button>
-			<button id="hidebuttons">Hide controls</button>
-			<button id="characters">Change characters</button>
-			<button id="help">Help</button>
-			<button id="save">Save/Load</button>
-			<button id="reset">Reset</button>
-		</div>
-		-->
 	</div>
 	
-	<div id="tablewrap"><table id="tablemain"><tbody>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">S</span></td>
-			<td><div class="tier sort" id="rows"></div></td>
-			<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">A</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">B</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">C</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">D</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">E</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-		<tr>
-			<td class="labelHolder" contenteditable="true"><span class="label">F</span></td>
-			<td class="tierHolder"><div class="tier sort" id="rows"></div></td>
-			<td class="settingsContainer"><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
-		</tr>
-	</tbody></table>
+	<div id="tablewrap">
+		<div id="tablePlaceholder" style="height:500px"></div>
+		<table id="tablemain"><tbody></tbody></table>
 	</div>
 
 	<div id="tooltip">
@@ -156,12 +112,12 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
-	<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>!-->
 	<!--<script src="allnames.js"></script>-->
 	<script src="lib/dragula.min.js"></script>
 	<script src="lib/html2canvas.min.js"></script>
+	<script src="lib/jquery.min.js"></script>
 	<script src="lib/common.js"></script>
+	<script src="lib/tables.js"></script>
 	<script src="lib/tags.js"></script>
 	<script>
 		dragula({
@@ -171,100 +127,32 @@
 		}).on("drop", function() {
 			localStorage.setItem("TierListMakerCode",toCode());
 		});
-		
-		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color:#FFFF7F'><span class='label'>NEW</span></td><td class='tierHolder'><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='settingsContainer'><div id='settings'></div><div id='moveButtons'><div id='moveUp'></div><div id='moveDown'></div></div></td></tr>";
-		
-		var screenshotMode = false;
-		var showTooltip = true;
-		var listStickied = false;
-		var colors = ["#FF7F7F","#FFBF7F","#FFDF7F","#FFFF7F","#BFFF7F","#7FFF7F","#7FFFFF","#7FBFFF","#7F7FFF","#FF7FFF","#BF7FBF","#3B3B3A","#858585","#CFCFCF","#F7F7F7"];
-		// first is the row in the table of the tier, second is the index of its color
-		var tierDefaults = [ [$("tr:nth-of-type(1)"), 0],
-					  [$("tr:nth-of-type(2)"), 1],
-					  [$("tr:nth-of-type(3)"), 3],
-					  [$("tr:nth-of-type(4)"), 5],
-					  [$("tr:nth-of-type(5)"), 7],
-					  [$("tr:nth-of-type(6)"), 8],
-					  [$("tr:nth-of-type(7)"), 9] ];
+
 		var tier = []; // format: [element, color id]
 		var tierlist = [];
-		var currentTier;
-		var tempTier;
-		var tierIndex;
-		var currentColor;
-		var colorIndex;
-					  
-		for (var i = 0; i < tierDefaults.length; i++) {
-			tierDefaults[i][0].find(".labelHolder").css("background",colors[tierDefaults[i][1]]);
-		}
 
 		$(document).on("click", ".nav-toggle", function() {
-			if (showTooltip) {
-				$("#tooltip").css("display", "none");
-				showTooltip = false;
-			}
+			toggleTooltip();
 		});
-		
+
 		$(document).on("click", "#dock", function() {
-			if (listStickied) {
-				$("#tablewrap").css("position","static");
-				$("#dock").text("Dock tier list");
-				listStickied = false;
-			} else {
-				$("#tablewrap").css("position","sticky");
-				$("#dock").text("Undock tier list");
-				listStickied = true;
-			}
+			toggleTierListDock();
 		});
-			
-		$(document).on("click", "#settings", function() { // open settings modal
-			currentTier = $(this).parent().parent();
-			currentColor = currentTier.find(".labelHolder").css("background-color");
-			$("textarea").val(currentTier.find(".labelHolder").text());
-			colorIndex = colors.indexOf(rgb2hex(currentColor).toUpperCase());
-			tier = [currentTier, colorIndex];
-			console.log(tier);
-			for (var i = 0; i < $("#modal span").length; i++) {
-				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
-			}
-			$("#modal span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
-			openPopup("#modal");
+
+		$(document).on("click", "#settings", function() {
+			openTierSettings(this);
 		});
-		
-		$(document).on("click", "#colorselect span", function() { // change row label
-			for (var i = 0; i < $("#modal span").length; i++) {
-				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
-			}
-			$(this).attr("class","selected");
-			currentTier.find(".labelHolder").css("background-color",$(this).css("background-color"));
-			updateTiers();
+
+		$(document).on("click", "#colorselect span", function() {
+			changeTierColour(this);
 		});
 
 		$(document).on("click", "#save", function() { // open save/load modal
-			openPopup("#screenshotShow");
-			$("#screenshotShow").find("textarea").val(toCode());
+			openScreenshotModal();
 		});
 
 		$(document).on("change", ".characterCheck", function() { // add/remove characters
-			gameId = ($(this).attr("id"));
-			gameClass = ($(this).attr("class"));
-			// remove non-numeric characters - stackoverflow.com/questions/1862130/
-			gameIndex = gameClass.replace(/\D/g,'');
-			// alternative 
-			// gameInfo = currentGameChars.find(function(curr) { return curr[0] == gameId;});
-
-			if($(this).is(":checked")) {
-				for (var k = 0; k <= currentGameChars[gameIndex][1]; k++) {
-					$("#char div:last-child").after(singleChar);
-					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+gameId+"/"+k+".png)");
-					$("#char div:last-child").attr("id", gameId + "-" + k);
-					// $("#char div:last-child").attr("title", allCharacters[gameIndex][k]);
-				}
-			} else {
-				$(".character[id^='"+currentGameChars[gameIndex][0]+"-']").each( function() {
-					$(this).remove();
-				});
-			}
+			changeCharacterCheckbox(this);
 			updateFilters(imgTags);
 		});
 
@@ -275,6 +163,52 @@
 		$(document).on("dblclick", ".character", function() { // move to highest tier instantly
 			$(this).detach().appendTo('#rows');
 		});
+
+		$(document).on("click", "#hidebuttons", function() {
+			toggleTierControls();
+		});
+
+		$(document).on("click", "#screenshot", function() {
+			takeScreenshot();
+		});
+
+		$(document).on("click", "#clearRow", function() {
+			clearTierRow();
+		});
+
+		$(document).on("click", "#deleteRow", function() {
+			deleteTierRow();
+			updateTiers();
+			$("#overlay").css("opacity", 0);
+			$("#overlay").css("visibility", "hidden");
+			closePopups();
+		});
+
+		$(document).on("click", "#addRowUp", function() {
+			addTierRowAbove();
+			updateTiers();
+		});
+
+		$(document).on("click", "#addRowBelow", function() {
+			addTierRowBelow();
+			updateTiers();
+		});
+
+		$(document).on("click", "#moveUp", function() {
+			moveTierRowUp(this);
+		});
+
+		$(document).on("click", "#moveDown", function() {
+			moveTierRowDown(this);
+		});
+
+		$(document).on("click", "#runCode", function() {
+			loadCode($("#exportcode").val(), gameFe);
+		});
+
+		$(document).on("click", "#reset", function() {
+			changeGame(currentGameChars);
+		});
 			
 		$(document).on("click", function(e) {
 			clicked = e.target.id;
@@ -283,92 +217,16 @@
 				$("#screenshotShow").css("display", "none");
 				$("#overlay").css("opacity", 0);
 				$("#overlay").css("visibility", "hidden");
-			} else if(clicked == "screenshot") { // take a screenshot
-				$("#exportcode").val(toCode()); // generate save/load code
-				closePopups();
-				$("#screenshotShow").css("display","block");
-				$("#overlay").css("opacity", 1);
-				$("#overlay").css("visibility", "visible");
-				if (!screenshotMode) {
-					$("#hidebuttons").click();
-				}
-				$("#tablemain").css("margin", "3px");
-				$("#tablemain").css("max-width", "100%");
-				window.scrollTo(0,0);
-				html2canvas(document.getElementById("tablemain")).then(function(canvas) {
-					$("#screenshotShow span").after(canvas);
-					$("#screenshotShow canvas").css("max-width", "100%");
-					$("#screenshotShow canvas").css("height", "auto");
-					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
-					$("#tablemain").removeAttr('style'); // clear css changes
-				});
-
-			} else if(clicked == "hidebuttons") { // hide the buttons
-				if (screenshotMode) {
-					$("td:last-of-type").css("display","table-cell");
-					$("#hidebuttons").text("Hide controls");
-					screenshotMode = false;
-				} else {
-					$("td:last-of-type").css("display","none");
-					$("#hidebuttons").text("Show controls");
-					screenshotMode = true;
-				}
-			} else if(clicked == "clearRow") { // put characters in this row back into the box
-				for(var i = 0; i < currentTier.find("#rows div").length; i++) {
-					$("#char div:last-child").after(currentTier.find("#rows div"));
-				}
-			} else if(clicked == "deleteRow") { // delete this row
-				for(var i = 0; i < currentTier.find("#rows div").length; i++) {
-					$("#char div:last-child").after(currentTier.find("#rows div"));
-				}
-				currentTier.remove();
-				updateTiers();
-				$("#overlay").css("opacity", 0);
-				$("#overlay").css("visibility", "hidden");
-				closePopups();
-			} else if (clicked == "addRowUp") { // add a row on top of the current row
-				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
-				updateTiers();
-			} else if (clicked == "addRowBelow") { // add a row below the current row
-				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").after(singleTier);
-				updateTiers();
-			} else if (clicked == "moveUp") { // move the row above the row above it
-				currentTier = $(e.target).closest("tr");
-				if (currentTier.prev("tr").length != 0)
-					currentTier.insertBefore(currentTier.prev("tr"));
-			} else if (clicked == "moveDown") { // move the row below the row below it
-				currentTier = $(e.target).closest("tr");
-				if (currentTier.next("tr").length != 0)
-					currentTier.insertAfter(currentTier.next("tr"));
-			} else if (clicked == "runCode") {
-				loadCode($("#exportcode").val(), gameFe);
-			} else if (clicked == "reset") {
-				changeGame(currentGameChars);
-			} 
+			}
 		});
 		
 		$("#labelName").bind("input propertychange", function() {
-			currentTier.find(".label").html($("#labelName").val().replace(/\n/g, "<br>"));
+			changeTierLabelText();
 		});
 		
 		$("#resetLabel").on("click", function() {
-			currentTier.find(".labelHolder").html('<span class="label">New Label</label>');
+			resetTierLabel();
 		});
-		
-		function updateTiers() {
-			tierlist = [];
-			tempTier = currentTier;
-			for (var i = 0; i < $("tr").length; i++) {
-				currentTier = $("tr:nth-of-type("+(i+1)+")");
-				currentColor = currentTier.find(".labelHolder").css("background-color"); // returns in rgb format, have to convert to hex
-				tier[0] = currentTier;
-				tier[1] = colors.indexOf(rgb2hex(currentColor).toUpperCase());
-				// console.log(tier);
-				tierlist.push(tier);
-			}
-			currentTier = tempTier;
-			// console.log(tierlist);
-		}
 		
 		function changeGame(game) {
 			currentGameChars = [];
@@ -389,14 +247,6 @@
 			});
 			
 			for (var i = 1; i < game.length; i++) {
-				/*
-				for (var k = 0; k <= game[i][1]; k++) {
-					$("#char div:last-child").after(singleChar);
-					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i][0]+"/"+k+".png)");
-					$("#char div:last-child").attr("id",i);
-				}
-				*/
-				
 				$("#checklist div:last-child").after(singleCheckWrap);
 				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+game[i][0]+"' >");
 			}
@@ -414,6 +264,7 @@
 		}
 		
 		$(document).ready( function() {
+			initTable();
 			$("#char").html("<div></div>");
 			if (localStorage.getItem("ColorTiersCode") === null)
 				changeGame(gameFe);
