@@ -133,7 +133,6 @@
                 ];
 
 		var tier = []; // format: [element, color id]
-		var tierlist = [];
 
 		$(document).on("click", ".nav-toggle", function() {
 			toggleTooltip();
@@ -177,7 +176,6 @@
 
 		$(document).on("click", "#deleteRow", function() {
 			deleteTierRow();
-			updateTiers();
 			$("#overlay").css("opacity", 0);
 			$("#overlay").css("visibility", "hidden");
 			closePopups();
@@ -185,12 +183,10 @@
 
 		$(document).on("click", "#addRowUp", function() {
 			addTierRowAbove();
-			updateTiers();
 		});
 
 		$(document).on("click", "#addRowBelow", function() {
 			addTierRowBelow();
-			updateTiers();
 		});
 
 		$(document).on("click", "#moveUp", function() {
@@ -228,39 +224,9 @@
 		});
 		
 		function changeGame(game) {
-			currentGameChars = [];
-			currentGameChars = game;
-			currentGame = game[0][0];
-			$(".character").each( function() {
-				$(this).remove();
-			});
-			$(".characterCheckWrap").each( function() {
-				$(this).remove();
-			});
-			// just in case there's more than one...
-			$(".selectAllWrap").each( function() {
-				$(this).remove();
-			});
-			
-			for (var i = 1; i < game.length; i++) {
-				/*
-				for (var k = 0; k <= game[i][1]; k++) {
-					$("#char div:last-child").after(singleChar);
-					$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i][0]+"/"+k+".png)");
-					$("#char div:last-child").attr("id",i);
-				}
-				*/
-				
-				$("#checklist div:last-child").after(singleCheckWrap);
-				$("#checklist div:last-child").html(game[i][2]+": <input type='checkbox' class='characterCheck "+"game"+i+"' id='"+game[i][0]+"' >");
-			}
-			$("#checklist div:last-child").after(selectAllWrap);
-			$("#checklist div:last-child").html("Select All: <input type='checkbox' class='selectAll' id='all' >");
-			
+			buildCharacterLists(game);
 			$( ".selectAll" ).prop('checked', true).change();
-
 			$("h1 span").text(currentGame);
-			updateTiers();
 		}
 		
 		$(document).ready( function() {
@@ -272,10 +238,9 @@
 				$("#exportcode").val(localStorage.getItem("ColorTiersCode"));
 				loadCode(localStorage.getItem("ColorTiersCode"), gameAll);
 			}
-			updateTiers();
 			tierlistSize();
 		});
-		$(window).resize( function () {
+		$(window).resize(function () {
 			tierlistSize();
 		})
 	</script>
