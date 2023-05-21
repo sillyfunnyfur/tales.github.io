@@ -127,8 +127,6 @@
 
 		var tier = []; // format: [element, color id]
 		var tierlist = [];
-		var currentTier;
-		var colorIndex;
 
 		$(document).on("click", ".nav-toggle", function() {
 			toggleTooltip();
@@ -184,12 +182,12 @@
 		});
 
 		$(document).on("click", "#addRowUp", function() {
-			$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
+			addTierRowAbove();
 			updateTiers();
 		});
 
 		$(document).on("click", "#addRowBelow", function() {
-			$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").after(singleTier);
+			addTierRowBelow();
 			updateTiers();
 		});
 
