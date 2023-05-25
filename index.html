@@ -81,19 +81,7 @@
 			<div id="helpMenu" class="popupMenu">
 				<h1>HELP</h1>
 				<span id="close"></span>
-				<p>Also check out the <a href ="https://fe-tier-list-maker.github.io/home">other tools</a>, including a game tier list maker and graph maker!</p>
-				<p>For any issues, add it to the list on the repository page or message me on <a href ="https://twitter.com/vernie_dk">Twitter</a> or elsewhere.</p>
-				<p>You can click and drag characters into the list or double-click to instantly move them to the highest tier.</p>
-				<p>Clicking on the "Dock tier list" button will <strong>stick the tier list to the top of the window.</strong>
-				This can be useful if you have a large number of characters on-screen and don't want to scroll up and down
-				as you drag them into your list. Clicking the button again will return the list to its original position.</p>
-				<p>You can take a screenshot or generate code to load your current list later in the "Save/Load" tab.</p>
-				<p>There is a gear next to each tier in the tierlist. If you click on it, you can <strong>change the color of the tier label, add rows, delete the row, or remove all of the characters currently in the row.</strong></p>
-				<p>Next to the gear are two arrows which will let you <strong>move a tier up and down a level</strong>.</p>
-				<p><strong>You can change the name of the tier</strong> by clicking on the tier label and typing in there. If this doesn't work, you can change or reset it in the tier's settings menu (the gear).</p>
-				<p>If you want to <strong>completely start over</strong>, refresh the page or click the "Reset" button at the top of the page.</a>
-				<p>Source code can be found <a href ="https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io">here</a> and was forked from <a href ="https://github.com/quetzle/smash-apps">here</a>.</p>
-				<p>Information on image ownership can be found <a href = "https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io/blob/master/CREDITS.md">here</a>.</p>
+				<p>boop</p>
 			</div>
 			<div id="screenshotShow" class="popupMenu">
 				<h1>SAVE/LOAD</h1>
@@ -116,9 +104,9 @@
 	<script src="lib/dragula.min.js"></script>
 	<script src="lib/html2canvas.min.js"></script>
 	<script src="lib/jquery.min.js"></script>
-	<script src="lib/common.js"></script>
+	<script src="editableJs/common.js"></script>
 	<script src="lib/tables.js"></script>
-	<script src="lib/tags.js"></script>
+	<script src="editableJs/tags.js"></script>
 	<script>
 		dragula({
 			isContainer: function (el) {
@@ -200,7 +188,7 @@
 		});
 
 		$(document).on("click", "#runCode", function() {
-			loadCode($("#exportcode").val(), gameFe);
+			loadCode($("#exportcode").val(), imgGamesFolder);
 		});
 
 		$(document).on("click", "#reset", function() {
@@ -208,6 +196,7 @@
 		});
 			
 		$(document).on("click", function(e) {
+			console.log("click")
 			clicked = e.target.id;
 			if(clicked == "overlay" || clicked == "modalWrapper" || clicked == "close") { // close modals
 				closePopups();
@@ -225,30 +214,36 @@
 			resetTierLabel();
 		});
 		
+		// creates characters, needs to have buildcharacterlist()
 		function changeGame(game) {
+			console.log("changeGame")
 			$(".filterCheck").each( function() {
 				$(this).prop('checked', false).change();
 			});
 			buildCharacterLists(game);
 			// 37 means Engage
-			$( ".characterCheck.game37" ).prop('checked', true).change();
+			$( ".characterCheck.game1" ).prop('checked', true).change();
 			$("h1 span").text(currentGame);
+			
 		}
 		
+		// creates table and characters
 		$(document).ready( function() {
 			initTable();
+			console.log("initTable")
 			$("#char").html("<div></div>");
 			if (localStorage.getItem("ColorTiersCode") === null)
-				changeGame(gameFe);
+				changeGame(imgGamesFolder);
 			else {
 				$("#exportcode").val(localStorage.getItem("ColorTiersCode"));
-				loadCode(localStorage.getItem("ColorTiersCode"), gameFe);
+				loadCode(localStorage.getItem("ColorTiersCode"), imgGamesFolder);
 			}
 			loadFilterList(allTags);
 			tierlistSize();
 		});
 		$(window).resize( function () {
 			tierlistSize();
+			console.log("resize")
 		})
 	</script>
 </body>
