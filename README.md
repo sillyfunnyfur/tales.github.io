@@ -27,3 +27,4 @@ The original Fire Emblem fork also contained many more functionalities that migh
 - Considering adding CotC characters as option (EN and JP separate would be preferred)
 - A domain that's easier to remember and keep track of (aka no longer featuring my github accountname in it)
 - Octopuffs are missing, due to the lack of sprites on both the octopath fandom wiki and spriters resources
+- (Optional) Moving the characters to the side of the tierlist rather than below
