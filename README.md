@@ -18,3 +18,12 @@ The structure is as followed:
 - Folder = **lib**: Contains the libraries used in the project and are not required for the project to work on other games. However, in ``toolcommon.js``, you can change the default game when the page is loaded if desired so.
 - Folder = **nav**: Contains more libraries that are not relevant for the project as is.
 - **index.html**: Contains the page information. The information that needs to be changed for other projects is within the ``<head>`` tag. This tag contains information like the link preview description and image used. It also contains the page title and icon information. Change the urls where neccesary and update the images in the ``img`` folder to your game to make it more accurate to what your franchise represents.
+
+## Small notice
+The original Fire Emblem fork also contained many more functionalities that might pique the interest of some people. This includes charts and venn diagrams for the characters. They have been ommitted from this project out of simplicity, but please consider taking a look at https://github.com/fe-tier-list-maker/fe-tier-list-maker.github.io if you want to know more.
+
+## What to add or improve:
+- More streamlined portraits for the characters following a certain format or pattern
+- Considering adding CotC characters as option (EN and JP separate would be preferred)
+- A domain that's easier to remember and keep track of (aka no longer featuring my github accountname in it)
+- Octopuffs are missing, due to the lack of sprites on both the octopath fandom wiki and spriters resources
