@@ -8,6 +8,7 @@ var imgGamesFolder = [
     ["octopath", 0, ""],
     ["octo1", 8, "Octopath 1"],
     ["octo2", 8, "Octopath 2"],
+    ["octo2gif", 8, "Octopath 2 (GIF)"],
     ["rare", 6, "Rare Encounters"]
 ];
 
