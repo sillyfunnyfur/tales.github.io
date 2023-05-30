@@ -22,13 +22,13 @@ const imgTags = {
         8: [femaleCharacter, hunter]
     },
     "octo2": {
-        1: [femaleCharacter, dancer],
+        1: [femaleCharacter, hunter],
         2: [femaleCharacter, apothecary],
-        3: [maleCharacter, warrior],
-        4: [femaleCharacter, hunter],
-        5: [maleCharacter, scholar],
-        6: [maleCharacter, merchant],
+        3: [femaleCharacter, thief],
+        4: [maleCharacter, scholar],
+        5: [maleCharacter, merchant],
+        6: [femaleCharacter, dancer],
         7: [maleCharacter, cleric],
-        8: [femaleCharacter, thief]
+        8: [maleCharacter, warrior]
     },
 }
