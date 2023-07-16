@@ -10,7 +10,7 @@ var imgGamesFolder = [
     ["cotc", 169, "Champions of the Continent"],
     ["octo2", 8, "Octopath 2"],
     ["octo2gif", 8, "Octopath 2 (GIF)"],
-    ["games", 9, "Team Asano Games (2009-2023)"],
+    ["games", 9, "Team Asano Games (>2009)"],
     ["octopuffs", 10, "Octopuffs"],
     ["rare", 6, "Caits"]
 ];
