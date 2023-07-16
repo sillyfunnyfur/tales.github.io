@@ -11,7 +11,8 @@ var imgGamesFolder = [
     ["octo2", 8, "Octopath 2"],
     ["octo2gif", 8, "Octopath 2 (GIF)"],
     ["games", 9, "Team Asano Games (2009-2023)"],
-    ["rare", 6, "Rare Encounters"]
+    ["octopuffs", 10, "Octopuffs"],
+    ["rare", 6, "Caits"]
 ];
 
 var currentGame;
