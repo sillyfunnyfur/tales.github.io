@@ -5,14 +5,11 @@ var selectAllWrap = "<div class='selectAllWrap'></div>";
 
 // number is last numbered filename in the list for ease of organization
 var imgGamesFolder = [
-    ["octopath", 0, ""],
-    ["octo1", 8, "Octopath 1"],
-    ["cotc", 210, "Champions of the Continent"],
-    ["octo2", 8, "Octopath 2"],
-    ["octo2gif", 8, "Octopath 2 (GIF)"],
-    ["games", 9, "Team Asano Games (>2009)"],
-    ["octopuffs", 10, "Octopuffs"],
-    ["rare", 6, "Caits"]
+    ["top", 107, "Tales of Phantasia"],
+    ["tod", 210, "Tales of Destiny"],
+    ["toe", 306, "Tales of Eternia"],
+    ["tod2", 406, "Tales of Destiny 2"],
+    ["tos", 509, "Tales of Symphonia"],
 ];
 
 var currentGame;
