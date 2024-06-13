@@ -6,10 +6,10 @@ var selectAllWrap = "<div class='selectAllWrap'></div>";
 // number is last numbered filename in the list for ease of organization
 var imgGamesFolder = [
     ["tales", 0, ""],
-    ["top", 7, "Tales of Phantasia"],
+    ["top", 6, "Tales of Phantasia"],
     ["tod", 9, "Tales of Destiny"],
     ["toe", 6, "Tales of Eternia"],
-    ["tod2", 6, "Tales of Destiny 2"],
+    ["tod2", 5, "Tales of Destiny 2"],
     ["tos", 9, "Tales of Symphonia"],
 ];
 
