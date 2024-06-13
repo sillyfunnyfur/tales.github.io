@@ -7,7 +7,7 @@ var selectAllWrap = "<div class='selectAllWrap'></div>";
 var imgGamesFolder = [
     ["tales", 0, ""],
     ["top", 7, "Tales of Phantasia"],
-    ["tod", 10, "Tales of Destiny"],
+    ["tod", 9, "Tales of Destiny"],
     ["toe", 6, "Tales of Eternia"],
     ["tod2", 6, "Tales of Destiny 2"],
     ["tos", 9, "Tales of Symphonia"],
