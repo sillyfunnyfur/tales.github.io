@@ -9,7 +9,7 @@ var imgGamesFolder = [
     ["top", 6, "Tales of Phantasia"],
     ["tod", 9, "Tales of Destiny"],
     ["toe", 6, "Tales of Eternia"],
-    ["tod2", 5, "Tales of Destiny 2"],
+    ["tod2", 6, "Tales of Destiny 2"],
     ["tos", 9, "Tales of Symphonia"],
 ];
 
